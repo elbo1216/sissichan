@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Sissichan2012::Application.load_tasks
+#Sissichan2012::Application.load_tasks

@@ -1,0 +1,31 @@
+.main-content .about-container {
+}
+
+.main-content .about-container .about-image {
+  float:left;
+  background-image: url('/images/about/aboutmainphoto.jpg');
+  background-repeat: no-repeat;
+  width: 435px;
+  height: 405px;
+  margin: 23px 0px 0px 23px;
+}
+
+.main-content .about-container .about-content {
+  float:left;
+  width: 435px;
+  height 405px;
+}
+
+.main-content .about-container .about-text {
+  height: 78%;
+  padding: 20px 0px 0px 20px; 
+  line-height: 19px;
+}
+
+.main-content .about-container .signature {
+
+}
+
+.main-content .about-container .signature img {
+  float:right;
+}

@@ -1,0 +1,102 @@
+.clear {
+  clear:both;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background-image: url('/images/bg_repeat.jpg');
+  background-repeat: repeat;
+  font-family: "Helvetica";
+  color: #4b3905;
+  font-size: 12px;
+}
+
+td {
+  font-family: "Helvetica";
+  color: #4b3905;
+  font-size: 12px;
+}
+
+a {
+  text-decoration:none;
+  color: #4b3905;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.frame {
+  background-image: url('/images/frame.png');
+  background-repeat: no-repeat;
+  width: 1045px;
+  height: 660px;
+  margin: 100px auto;
+}
+
+.frame .logo {
+  position: absolute;
+  background-image: url('/images/logo.png');
+  background-repeat: no-repeat;
+  width: 230px;
+  height: 210px;
+  margin: -85px 0px 0px 405px;
+}
+
+.frame .nav {
+  padding: 70px 70px 8px 70px;
+}
+
+.frame .nav .nav_divider {
+  color: #f390b0;
+}
+
+.frame .nav li {
+  float:left;
+  padding: 5px 30px 0px 30px;
+  height: 20px;
+}
+
+.frame .nav .separator-list {
+  border-left: 1px solid #f390b0;
+  border-right: 1px solid #f390b0;
+}
+
+.frame .nav .left-nav {
+  float:left;
+}
+
+.frame .nav .right-nav {
+  float:right;
+}
+
+.frame .nav .nav-text {
+  text-align:center;
+  margin: 50px 0px 0px;
+}
+
+.frame .nav .nav-text pre {
+  font-size: 10px;
+  color: #4b3905;
+  letter-spacing: 1px;
+  font-family: "Helvetica";
+}
+
+.frame .main-content {
+  margin:auto;
+  width: 925px;
+  height: 450px;
+  background-color: #fef3f6;
+}
+
+.frame .footer {
+  text-align:center;
+  font-family: "Helvetica";
+  font-size: 10px;
+  font-weight: bold;
+  color: #4b3905;
+  padding: 5px 0px;
+}

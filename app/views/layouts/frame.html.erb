@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <%= stylesheet_link_tag 'main' %>
+    <%= stylesheet_link_tag 'about' %>
+    <%= stylesheet_link_tag 'rates' %>
+    <%= stylesheet_link_tag 'reviews' %>
+    <%= stylesheet_link_tag 'press' %>
+    <%= stylesheet_link_tag 'contact' %>
+    <%= stylesheet_link_tag 'photos' %>
+    <%= javascript_include_tag 'jquery-1.7.2.min' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'gallery' %>
+  </head>
+  <body>
+    <div class='frame'>
+      <a href='/main'><div class='logo'></div></a>
+      <div class="nav">
+        <div class='left-nav'>
+          <ul>
+            <li><a href='/about'>ABOUT</a></li>
+            <li class='separator-list'><a href='/rates'>RATES</a></li>
+            <li><a href='/photos'>PHOTOS</a></li>
+          </ul>
+        </div>
+        <div class='right-nav'>
+          <ul>
+            <li><a href='/reviews'>REVIEWS</a></li>
+            <li class='separator-list'><a href='/press'>PRESS</a></li>
+            <li><a href='/contact'>CONTACT</a></li>
+          </ul>
+        </div>
+        <div class='nav-text'>
+         <pre>H A I R   &   M A K E U P</pre>
+        </div>
+      </div>
+      <div class="main-content">
+        <%= yield -%>
+      </div>
+      <div class='footer'>
+        <%= Date.today.year -%> Copyright of Sissi Chan LLC.
+      <div>
+    </div>
+  </body>
+</html>

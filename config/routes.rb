@@ -10,8 +10,16 @@ Sissichan2012::Application.routes.draw do
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 
+  match '/photos/wedding', :controller => 'photos', :action => 'wedding' 
+  match '/photos/glamor', :controller => 'photos', :action => 'glamor' 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  resources :main
+  resources :about
+  resources :rates
+  resources :reviews
+  resources :press
+  resources :contact
+  resources :photos
 
   # Sample resource route with options:
   #   resources :products do
@@ -48,7 +56,7 @@ Sissichan2012::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+   root :to => "main#index"
 
   # See how all your routes lay out with "rake routes"
 

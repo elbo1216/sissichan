@@ -1,0 +1,32 @@
+.main-content .main-photo {
+  float: left;
+  margin: 23px 8px 0px 15px;
+}
+
+.main-content .gallery-container {
+  float: left;
+  margin: 23px 0px 0px 15px;
+  width: 48%;
+}
+
+.main-content .thumb-container .thumb-list {
+  height: 395px;
+}
+
+.main-content .thumb-container .thumb-list .thumb {
+  float: left;
+  margin: 3px 11px 0px 0px;
+}
+
+.main-content .pagination {
+}
+
+.main-content .pagination .pagination-numbers {
+  float: left;
+  width: 375px;
+}
+
+.main-content .pagination .pagination-arrows {
+  float:right;
+  margin:0px 10px 0px 0px;
+}

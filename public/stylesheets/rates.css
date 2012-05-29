@@ -1,0 +1,87 @@
+.main-content .rates-container {
+}
+
+.main-content .rates-image {
+  float:left;
+  background-image: url('/images/rates/ratesmainphoto.jpg');
+  background-repeat: no-repeat;
+  width: 435px;
+  height: 405px;
+  margin: 23px 0px 0px 23px;
+}
+
+.main-content .rates-content {
+  float:left;
+  width: 435px;
+  height 405px;
+  margin:  20px 0px 0px 20px;
+}
+
+.main-content .rates-content table {
+  border: 0px;
+  font-family: "Helvetica";
+  color: #4b3905;
+  font-size: 12px;
+  width: 95%;
+  border-collapse:collapse;
+}
+
+.main-content .rates-content table thead {
+  background-color: #fce1e9;
+  color: #FC9CBB;
+}
+
+.main-content .rates-content table td {
+  height: 20px;
+}
+
+.main-content .rates-content table tbody {
+  border-top: 15px solid #FEF3F6;
+}
+
+.main-content .rates-content .right-align {
+  text-align:right;
+}
+
+.main-content .rates-top {
+}
+
+.main-content .rates-top-left {
+  float:left;
+  width: 50%;
+}
+
+.main-content .rates-top-right {
+  float:left;
+  width: 50%;
+}
+
+.main-content .rates-mid {
+  margin: 20px 0px 0px 0px;
+}
+
+.main-content .rates-content .rates-mid table {
+  width: 97%;
+}
+
+.main-content .rates-bottom {
+  margin: 90px 0px 0px 0px;
+}
+
+.main-content .rates-bottom a {
+  color: #f390b0;
+  font-weight: bold;
+}
+
+.main-content .rates-bottom ul {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.main-content .rates-bottom .rates-bottom-left-link {
+  float:left;
+}
+
+.main-content .rates-bottom .rates-bottom-right-link {
+  float:right;
+}

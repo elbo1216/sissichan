@@ -1,0 +1,45 @@
+<div class='thumb-container gallery-container'>
+  <div class='thumb-list'>
+    <% page_counter = 1 -%>
+    <% loop_counter = 1 -%>
+    <% @gallery.each do |g| -%>
+      <div class='thumb page-<%= page_counter -%>'>
+        <a href='javascript:showImage("<%= g.image.file_path + '/' + g.image.file_name%>");'>
+        <img src="<%= g.image.thumbnail.file_path + '/' + g.image.thumbnail.file_name %>" />
+        </a>
+      </div>  
+      <% if loop_counter >= 12 
+           page_counter += 1
+           loop_counter = 1
+         else
+           loop_counter += 1
+         end 
+      -%>
+    <% end -%>
+  </div>
+  <div class='clear'></div>
+  <div class='pagination'>
+    <div class='pagination-numbers'>
+      <% for i in 1..page_counter -%>
+        <a href="javascript:showPage(<%= i -%>)"><%= i -%></a>
+      <% end -%>
+    </div>
+    <div class='pagination-arrows'>
+      <a href='javascript:pageLeft()'><img src='/images/photos/page-left.png' /></a>
+        PAGE
+      <a href='javascript:pageRight()'><img src='/images/photos/page-right.png' /></a>
+    </div>
+  </div>
+</div>
+<div class='full-container gallery-container'>
+  <div class='full-image'>
+    <div class='image-container'>
+      <% unless @gallery.blank? -%>
+        <img src="<%= @gallery.first.image.file_path + '/' + @gallery.first.image.file_name%>" />
+      <% end -%>
+    </div>
+    <span class='full-caption'></span>
+  </div>
+</div>
+
+<script>showPage(1);</script>
