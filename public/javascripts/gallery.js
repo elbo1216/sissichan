@@ -1,8 +1,31 @@
-function showImage(imagePath) {
-  $('.full-image .image-container')
-     .empty()
-     .append(
-       $('<img src="' + imagePath +'" />r'));
+function showImage(imagePath, caption, url) {
+  var container = $('.full-image .image-container')
+  container.empty();
+  container
+     .css('background-image', "url(" + imagePath + ")")
+     .css('background-repeat', "no-repeat")
+     .css('width', '435px')
+     .css('height', '405px')
+     .css('textAlign', 'center')
+  if (url != "") {
+    var caption = $('<a>')
+                     .attr('href', url)
+                     .css('color', '#FEF3F6')
+                     .css('font-weight', 'bold')
+                     .hover(function() {
+                       $(this).css('text-decoration', 'underline')
+                      }, function() {
+                       $(this).css('text-decoration', 'none')
+                      }
+                     )
+                     .html(caption);
+    var span = $('<div>')
+                 .css('height', '100%')
+                 .css('width', '100%')
+                 .css('paddingTop', '390px')
+                 .append(caption);
+    container.append(span);
+  }
 }
 
 function showPage(page) {

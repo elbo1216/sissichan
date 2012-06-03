@@ -20,6 +20,16 @@
   padding: 5px 0px 0px 0px;
 }
 
+.main-content .contact-container .contact-form .event-date {
+  width: 279px;
+  border-right: #f390b0 solid 1px;
+  border-bottom: #f390b0 solid 2px; 
+  border-top: 0px;
+  border-left: 0px;
+  margin:0px 5px 0px 0px
+  
+}
+
 .main-content .contact-container .contact-form td {
   text-align:right;
   vertical-align:top;
@@ -53,3 +63,7 @@
   vertical-align:middle;
 }
 
+/* CSS for the date picker.  Modifying to make it more inline with the site */
+.ui-date-picker .ui-widget-header {
+  color: #4B3905;
+}

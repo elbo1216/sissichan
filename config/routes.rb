@@ -12,6 +12,9 @@ Sissichan2012::Application.routes.draw do
 
   match '/photos/wedding', :controller => 'photos', :action => 'wedding' 
   match '/photos/glamor', :controller => 'photos', :action => 'glamor' 
+  match '/booking_policy', :controller => 'rates', :action => 'booking_policy' 
+  match '/faq', :controller => 'rates', :action => 'faq' 
+  match '/contact/submit', :controller => 'contact', :action => 'submit' 
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   resources :main

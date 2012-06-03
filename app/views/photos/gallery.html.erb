@@ -4,8 +4,8 @@
     <% loop_counter = 1 -%>
     <% @gallery.each do |g| -%>
       <div class='thumb page-<%= page_counter -%>'>
-        <a href='javascript:showImage("<%= g.image.file_path + '/' + g.image.file_name%>");'>
-        <img src="<%= g.image.thumbnail.file_path + '/' + g.image.thumbnail.file_name %>" />
+        <a href='javascript:showImage("<%= g.image.file_path + '/' + g.image.file_name%>", "<%= g.image.caption %>", "<%= g.image.caption_url %>");'>
+        <img src="<%= g.image.thumb_file_path + '/' + g.image.thumb_file_name %>" />
         </a>
       </div>  
       <% if loop_counter >= 12 
@@ -35,10 +35,9 @@
   <div class='full-image'>
     <div class='image-container'>
       <% unless @gallery.blank? -%>
-        <img src="<%= @gallery.first.image.file_path + '/' + @gallery.first.image.file_name%>" />
+        <script>showImage(<%= "'#{@gallery.first.image.file_path}/#{@gallery.first.image.file_name}', '#{@gallery.first.image.caption}', '#{@gallery.first.image.caption_url}'" %>);</script>
       <% end -%>
     </div>
-    <span class='full-caption'></span>
   </div>
 </div>
 

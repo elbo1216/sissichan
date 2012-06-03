@@ -27,7 +27,7 @@
         </tr>
         <tr> 
           <td class='form-labels'>Date of Event:</td>
-          <td><input type='text' class='contact-form-input' id='eventDate' /></td>
+          <td><input type='text' class='event-date' id='eventDate' /></td>
         </tr>
         <tr> 
           <td class='form-labels'>Subject:</td>
@@ -46,3 +46,35 @@
     </div>
   </div>
 </div>
+<script>
+$(function() {
+		$( "#eventDate" ).datepicker({ 
+      showOn: "button",
+      buttonImage: "/images/jquery-ui/calendar.gif",
+      buttonImageOnly: true
+    });
+	});
+
+$(function() {
+  $('#form-submit')
+    .hover(function() {
+        $(this).css('cursor', 'pointer');
+      }, function() {
+        $(this).css('cursor', 'normal');
+      }
+    )
+    .click(function() {
+      $.ajax({
+        url: '/contact/submit',
+        data: {'name': $('#name').val(),
+               'phone': $('#phone').val(),
+               'email': $('#email').val(),
+               'event_date': $('#eventDate').val(),
+               'subject': $('#subject').val(),
+               'message': $('#message').val()}
+        })
+        .done(function() {
+        });
+    })
+});
+</script>
