@@ -1,9 +1,12 @@
 class Emailer < ActionMailer::Base
-  def contact(recipient, subject, message, sent_at = Time.now)
-    @subject = subject
-    @recipients = recipient
-    @from = 'sissichan@gmail.com'
-    @sent_on = sent_at
-    @body["message"] = message
-   end
+  def contact(name, email, subject, message, eventDate)
+    mail(:subject => subject,
+         :recipients => email,
+         :from => 'sissichan@gmail.com')
+   
+    @message = message
+    @eventDate = eventDate
+    @name = name
+    @email = email
+  end
 end
