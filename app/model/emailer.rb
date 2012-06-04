@@ -1,7 +1,9 @@
 class Emailer < ActionMailer::Base
+  default :from => 'sissichan@gmail.com'
+
   def contact(name, email, subject, message, eventDate)
     mail(:subject => subject,
-         :recipients => email,
+         :to => email,
          :from => 'sissichan@gmail.com')
    
     @message = message
