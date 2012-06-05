@@ -42,12 +42,13 @@ module Sissichan2012
     # configure action_mailer
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      :address => 'mail.sissichan.com',
+      :enable_starttls_auto => true,
+      :address => 'smtp.gmail.com',
       :port => 587,
       :domain => 'sissichan.com',
-      :authentication => :login,
+      :authentication => :plain,
       :user_name => 'sissichan@sissichan.com',
-      :password => ''
+      :password => 'S1ss1Ch@n'
     }
     config.action_mailer.raise_delivery_errors = true
     config.action_mailer.perform_deliveries = true
