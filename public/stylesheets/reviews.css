@@ -27,6 +27,11 @@
   font-size: 12px;
 }
 
+.main-content .reviews-content .review-block pre {
+  font-family: 'Helvetica';
+  font-style: italic;
+}
+
 ::-webkit-scrollbar {
     width: 2px;
 }
