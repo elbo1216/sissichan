@@ -12,6 +12,7 @@
       </ul>
     </div>
     <div class='form-container'>
+      <div class='contact-response' id='contact-response'></div>
       <table>
         <tr> 
           <td class='form-labels'>Name:</td>
@@ -64,16 +65,65 @@ $(function() {
       }
     )
     .click(function() {
+      var respDiv = $('#contact-response');
+      var name = $('#name').val();
+      var phone = $('#phone').val();
+      var email = $('#email').val();
+      var eventdate = $('#eventDate').val();
+      var subject = $('#subject').val();
+      var message = $('#message').val();
+      var err = [];
+
+      if ($.trim(name) == "") {
+        err.push("name");
+      }
+
+      if ($.trim(phone) == "") {
+        err.push("phone");
+      }
+
+      if ($.trim(email) == "") {
+        err.push("email");
+      }
+
+      if ($.trim(eventdate) == "") {
+        err.push("event date");
+      }
+
+      if ($.trim(subject) == "") {
+        err.push("subject");
+      }
+
+      if ($.trim(message) == "") {
+        err.push("message");
+      }
+
+      if (err.length > 0) {
+        respDiv
+          .css('color', 'red')
+          .html('The following fields cannot be blank: <br/>' + err.join(', '));
+        return;
+      }
+
       $.ajax({
         url: '/contact/submit',
-        data: {'name': $('#name').val(),
-               'phone': $('#phone').val(),
-               'email': $('#email').val(),
-               'event_date': $('#eventDate').val(),
-               'subject': $('#subject').val(),
-               'message': $('#message').val()}
+        data: {'name': name,
+               'phone': phone,
+               'email': email,
+               'event_date': eventdate,
+               'subject': subject,
+               'message': message}
         })
         .done(function(data) {
+          if (data == 'Ok') {
+            respDiv
+             .css('color', 'black')
+             .html('Thank you for your interest in my services. You should be hearing from me <br/>shortly.')
+          } else {
+            respDiv
+             .css('color', 'red')
+             .html('Sorry, there is an error with our system. <br/>Please try again later or you can directly email me at sissichan@gmail.com.')
+          }
         });
     })
 });

@@ -11,6 +11,14 @@
   margin: 23px 0px 0px 23px;
 }
 
+.main-content .contact-response {
+  height: 20px;
+  line-height: 18px;
+  margin: 10px 0px 20px 0px;
+  text-align:justify;
+  font-style: italic;
+}
+
 .main-content .contact-container .contact-form {
   float: left;
   padding: 0px 0px 0px 30px;
@@ -51,7 +59,7 @@
 }
 
 .main-content .contact-container .contact-info ul {
-  margin:50px 0px 30px 90px;
+  margin:40px 0px 20px 90px;
   line-height: 16px;
 }
 
