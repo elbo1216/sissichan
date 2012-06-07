@@ -4,9 +4,8 @@ require 'rubygems'
 require 'fcgi'
 
 ENV['RAILS_ENV'] ||= 'production'
-
-ENV['CONFIG_ENV'] = File.exists?("#{Rails.root}/config/features/stage") ? 'stage' : 'production' 
-
+ENV['CONFIG_ENV'] = 'production' 
+ENV['CONFIG_ENV'] = "stage" if File.exists?("#{Rails.root}/config/features/stage")
 # Set GEM_PATH and GEM_HOME ("user" is your dreamhost user)
 ENV['GEM_HOME'] ||= '/home/sissichan/.gems'
 require 'rubygems'
