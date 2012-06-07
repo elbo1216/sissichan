@@ -10,6 +10,7 @@ function showImage(imagePath, caption, url) {
   if (url != "") {
     var caption = $('<a>')
                      .attr('href', url)
+                     .attr('target', '_blank')
                      .css('color', '#FEF3F6')
                      .css('font-weight', 'bold')
                      .hover(function() {

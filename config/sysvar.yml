@@ -1,0 +1,7 @@
+development:
+  mail_user_name: 'foobar'
+  mail_password: 'S!551c4@n'
+
+production:
+  mail_user_name: 'sissichan@rails.sissichan.com'
+  mail_password: 'S!551c4@n'
