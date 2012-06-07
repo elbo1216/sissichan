@@ -3,7 +3,7 @@
 require 'rubygems'
 require 'fcgi'
 
-ENV['RAILS_ENV'] ||= 'production' 
+ENV['RAILS_ENV'] = File.exists?("#{Rails.root}/config/features/stage") ? 'stage' : 'production' 
 
 # Set GEM_PATH and GEM_HOME ("user" is your dreamhost user)
 ENV['GEM_HOME'] ||= '/home/sissichan/.gems'
@@ -25,6 +25,5 @@ class Rack::PathInfoRewriter
    @app.call(env)
  end
 end
-puts "2"
 
 Rack::Handler::FastCGI.run  Rack::PathInfoRewriter.new(Sissichan2012::Application)

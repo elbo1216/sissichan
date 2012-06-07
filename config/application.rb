@@ -47,7 +47,7 @@ module Sissichan2012
       :enable_starttls_auto => true,
       :address => 'smtp.gmail.com',
       :port => 587,
-      :domain => 'sissichan.com',
+      :domain => @sysvar[Rails.env]['domain'],
       :authentication => :plain,
       :user_name => @sysvar[Rails.env]['mail_user_name'],
       :password => @sysvar[Rails.env]['mail_password']
