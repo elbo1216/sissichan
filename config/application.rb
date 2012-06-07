@@ -40,17 +40,17 @@ module Sissichan2012
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-
+    ENV['CONFIG_ENV'] ||= 'development'
     # configure action_mailer
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
       :enable_starttls_auto => true,
       :address => 'smtp.gmail.com',
       :port => 587,
-      :domain => @sysvar[Rails.env]['domain'],
+      :domain => @sysvar[ENV['CONFIG_ENV']]['domain'],
       :authentication => :plain,
-      :user_name => @sysvar[Rails.env]['mail_user_name'],
-      :password => @sysvar[Rails.env]['mail_password']
+      :user_name => @sysvar[ENV['CONFIG_ENV']]['mail_user_name'],
+      :password => @sysvar[ENV['CONFIG_ENV']]['mail_password']
     }
     config.action_mailer.raise_delivery_errors = true
     config.action_mailer.perform_deliveries = true

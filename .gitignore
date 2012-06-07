@@ -5,3 +5,4 @@ tmp/**/*
 public/images/photos/full
 public/images/photos/thumbs
 *.swp
+config/features/stage
