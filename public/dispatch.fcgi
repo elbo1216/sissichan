@@ -1,9 +1,9 @@
-#!/usr/bin/env ruby
+#!/usr/bin/ruby
 
 require 'rubygems'
 require 'fcgi'
 
-ENV['RAILS_ENV'] ||= 'production'
+ENV['RAILS_ENV'] ||= 'production' 
 ENV['CONFIG_ENV'] = 'production' 
 ENV['CONFIG_ENV'] = "stage" if File.exists?(File.join(File.dirname(__FILE__), "../config/features/stage"))
 
