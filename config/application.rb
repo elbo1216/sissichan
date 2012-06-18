@@ -40,7 +40,8 @@ module Sissichan2012
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-    ENV['CONFIG_ENV'] ||= 'development'
+    ENV['CONFIG_ENV'] = 'production' 
+    ENV['CONFIG_ENV'] = "stage" if File.exists?(File.join(File.dirname(__FILE__), "../config/features/stage"))
     # configure action_mailer
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
