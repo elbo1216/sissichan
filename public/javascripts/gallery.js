@@ -34,9 +34,9 @@ function showImage(imageId, totalImages, imagePath, caption, url) {
                    .css('color', '#FEF3F6')
                    .css('font-weight', 'bold')
                    .hover(function() {
-                     $(this).css('text-decoration', 'underline')
+                     $(this).css('color', '#817B68')
                     }, function() {
-                     $(this).css('text-decoration', 'none')
+                     $(this).css('color', 'white')
                     }
                    )
                    .html(caption);
@@ -45,6 +45,7 @@ function showImage(imageId, totalImages, imagePath, caption, url) {
   var imageDiv = $('<div>')
                .css('position', 'absolute')
                .css('float', 'left')
+               .css('color', 'white')
                .css('font-weight', 'bold')
                .css('paddingTop', '385px')
                .css('paddingLeft', '10px')
