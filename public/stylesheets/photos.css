@@ -30,3 +30,23 @@
   float:right;
   margin:0px 10px 0px 0px;
 }
+
+.main-content .image-nav {
+  height: 16px;
+  margin: -14px 0px 0px 0px;
+}
+
+.main-content .image-nav a {
+  font-size: 12px;
+}
+
+.main-content .image-nav .image-nav-left {
+  float: left;
+  width: 65px;
+}
+
+.main-content .image-nav .image-nav-right {
+  float: right;
+  width: 45px;
+  font-size: 12px;
+}

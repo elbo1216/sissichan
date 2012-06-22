@@ -2,9 +2,10 @@
   <div class='thumb-list'>
     <% page_counter = 1 -%>
     <% loop_counter = 1 -%>
+    <% image_counter = 1 -%>
     <% @gallery.each do |g| -%>
-      <div class='thumb page-<%= page_counter -%>'>
-        <a href='javascript:showImage("<%= g.image.file_path + '/' + g.image.file_name%>", "<%= g.image.caption %>", "<%= g.image.caption_url %>");'>
+      <div class='thumb page-<%= page_counter -%>' id='thumb-<%= image_counter -%>'>
+        <a href='javascript:showImage(<%= image_counter %>, <%= @gallery.size %>, "<%= g.image.file_path + '/' + g.image.file_name%>", "<%= g.image.caption %>", "<%= g.image.caption_url %>");'>
         <img src="<%= g.image.thumb_file_path + '/' + g.image.thumb_file_name %>" />
         </a>
       </div>  
@@ -14,6 +15,7 @@
          else
            loop_counter += 1
          end 
+         image_counter += 1
       -%>
     <% end -%>
   </div>
@@ -33,9 +35,14 @@
 </div>
 <div class='full-container gallery-container'>
   <div class='full-image'>
+    <div class='image-nav'>
+      <div class='image-nav-left'><a id='image-nav-prev' href=''>< previous</a></div>
+      <div class='image-nav-right'><a id='image-nav-next' href=''>next ></a></div>
+    </div>
+    <div class='clear'></div>
     <div class='image-container'>
       <% unless @gallery.blank? -%>
-        <script>showImage(<%= "'#{@gallery.first.image.file_path}/#{@gallery.first.image.file_name}', '#{@gallery.first.image.caption}', '#{@gallery.first.image.caption_url}'" %>);</script>
+        <script>showImage(1, <%= @gallery.size %>, <%= "'#{@gallery.first.image.file_path}/#{@gallery.first.image.file_name}', '#{@gallery.first.image.caption}', '#{@gallery.first.image.caption_url}'" %>);</script>
       <% end -%>
     </div>
   </div>
