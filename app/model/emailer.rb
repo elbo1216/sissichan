@@ -5,13 +5,14 @@ class Emailer < ActionMailer::Base
 
   default :to => sysvar[ENV['CONFIG_ENV']]['email']
 
-  def contact(name, email, subject, message, eventDate)
-    @message = message
-    @eventDate = eventDate
-    @name = name
-    @email = email
+  def contact(contact_obj)
+    @message = contact_obj.message
+    @eventDate = contact_obj.event_date.strftime('%m/%d/%Y')
+    @name = contact_obj.name
+    @email = contact_obj.email
+    @phone = contact_obj.phone
 
-    mail(:subject => subject,
-         :from => email)
+    mail(:subject => contact_obj.subject,
+         :from => contact_obj.email)
   end
 end

@@ -15,7 +15,7 @@ class ContactController < ApplicationController
       contact.message = params['message']
       contact.save!
   
-      contacter = Emailer.contact(contact.name, contact.email, contact.subject, contact.message, contact.event_date)
+      contacter = Emailer.contact(contact)
       contacter.deliver
   
       render :text => "Ok"
