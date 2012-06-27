@@ -10,7 +10,7 @@ stage:
   domain: "rails.sissichan.com"
 
 production:
-  mail_user_name: 'sissichan@rails.sissichan.com'
+  mail_user_name: 'sissichan@sissichan.com'
   mail_password: 'S!551c4@n'
   email: 'sissichan@gmail.com'
   domain: "sissichan.com"
