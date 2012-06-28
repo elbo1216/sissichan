@@ -6,7 +6,7 @@ development:
 stage:
   mail_user_name: 'sissichan@rails.sissichan.com'
   mail_password: 'S!551c4@n'
-  email: 'elbo1216@gmail.com'
+  email: 'sissichan@rails.sissichan.com'
   domain: "rails.sissichan.com"
 
 production:
