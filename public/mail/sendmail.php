@@ -1,10 +1,6 @@
 <?php /**/ ?><?php
 $headers  = "MIME-Version: 1.0\r\n";
 $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
-if(empty($_POST['senderEmail'])){
-        echo"no email address found";
-        exit;
-}
 
 $senderName      = $_POST['name'];
 $senderPhone     = $_POST['phone'];
@@ -13,7 +9,7 @@ $senderSubject   = $_POST['subject'];
 $senderEventDate = $_POST['eventDate'];
 $senderMsg       = nl2br($_POST['body']);
 $sitename        = "www.sissichan.com";
-$to              = "sissichan@gmail.com";
+$to              = "sissichan@rails.sissichan.com";
 $ToName          = "Your name";
 $date            = date("m/d/Y H:i:s");
 $ToSubject       = "Email From $senderName via $sitename";
