@@ -2,7 +2,7 @@ require 'net/http'
 
 class Contact < ActiveRecord::Base
   def before_create
-    key = Digest::SHA1.hexdigest Time.now.to_s if key.nil?
+    unique_id = Digest::SHA1.hexdigest Time.now.to_s if key.nil?
   end
 
   # NOTE: This is a crazy hack since I cannot get sendmail to work.
@@ -18,7 +18,7 @@ class Contact < ActiveRecord::Base
                    'phone' => self.phone,
                    'email' => self.email,
                    'subject' => self.subject,
-                   'key' => self.key,
+                   'key' => self.unique_id,
                    'eventDate' => self.event_date,
                    'body' => self.message
                  }

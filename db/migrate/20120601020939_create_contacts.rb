@@ -8,7 +8,7 @@ class Contacts < ActiveRecord::Migration
              event_date   date not null,
              subject      varchar(255) not null,
              message      text not null,
-             key          varchar(255),
+             unique_id    varchar(255),
              created_at   timestamp default '0000-00-00 00:00:00',
              updated_at   timestamp default now() on update now())"
 
