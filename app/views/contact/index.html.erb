@@ -48,6 +48,15 @@
   </div>
 </div>
 <script>
+function clearDataForm() {
+  $('#name').val("");
+  $('#phone').val("");
+  $('#email').val("");
+  $('#eventDate').val("");
+  $('#subject').val("");
+  $('#message').val("");
+}
+
 $(function() {
 		$( "#eventDate" ).datepicker({ 
       showOn: "button",
@@ -112,19 +121,25 @@ $(function() {
                'email': email,
                'event_date': eventdate,
                'subject': subject,
-               'message': message}
-        })
-        .done(function(data) {
-          if (data == 'Ok') {
-            respDiv
-             .css('color', 'black')
-             .html('Thank you for your interest in my services. You should be hearing from me <br/>shortly.')
-          } else {
-            respDiv
-             .css('color', 'red')
-             .html('Sorry, there is an error with our system. <br/>Please try again later or you can directly email me at sissichan@gmail.com.')
-          }
-        });
+               'message': message},
+        beforeSend: function(data) {
+          respDiv
+           .css('color', 'black')
+           .html('Sending...')
+        }
+      })
+      .done(function(data) {
+        if (data == 'Ok') {
+          clearDataForm()
+          respDiv
+           .css('color', 'black')
+           .html('Thank you for your interest in my services. You should be hearing from me <br/>shortly.')
+        } else {
+          respDiv
+           .css('color', 'red')
+           .html('Sorry, there is an error with our system. <br/>Please try again later or you can directly email me at sissichan@gmail.com.')
+        }
+      });
     })
 });
 </script>
