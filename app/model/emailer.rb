@@ -13,6 +13,7 @@ class Emailer < ActionMailer::Base
     @phone = contact_obj.phone
 
     mail(:subject => contact_obj.subject,
-         :from => contact_obj.email)
+         :from => contact_obj.email,
+         :reply_to => contact_obj.email)
   end
 end
