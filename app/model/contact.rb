@@ -18,8 +18,9 @@ class Contact < ActiveRecord::Base
                    'phone' => self.phone,
                    'email' => self.email,
                    'subject' => self.subject,
-                   'key' => self.unique_id,
-                   'eventDate' => self.event_date,
+                   'unique_id' => self.unique_id,
+                   'eventDate' => self.event_date.strftime('%b %d %Y'),
+                   'unique_id' => 'aWdvsFwevcrg42grw23WDF',
                    'body' => self.message
                  }
     resp, data = Net::HTTP.post_form(url, post_args)

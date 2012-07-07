@@ -19,11 +19,11 @@
 .main-content .about-container .about-text {
   height: 78%;
   padding: 20px 0px 0px 20px; 
-  line-height: 19px;
+  line-height: 18px;
 }
 
 .main-content .about-container .signature {
-
+  margin: 10px 0px 0px 0px;
 }
 
 .main-content .about-container .signature img {

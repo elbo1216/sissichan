@@ -2,6 +2,11 @@
 $headers  = "MIME-Version: 1.0\r\n";
 $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
 
+if($_POST['unique_id'] != "aWdvsFwevcrg42grw23WDF"){
+	echo"not sent";
+	exit;
+}
+
 $senderName      = $_POST['name'];
 $senderPhone     = $_POST['phone'];
 $senderEmail     = $_POST['email'];
@@ -14,15 +19,16 @@ $ToName          = "Your name";
 $date            = date("m/d/Y H:i:s");
 $ToSubject       = "Email From $senderName via $sitename";
 $comments        = $msgPost;
-$EmailBody       = "A visitor to $sitename has left the following information<br />
-                Sent By: $senderName<br />
-                                Phone: $senderPhone
+$EmailBody       = "<i>A visitor to $sitename has left the following information</i><br />
+                <b>Sent By:</b> $senderName<br />
+                                <b>Phone:</b> $senderPhone
+                                <br />
+                                <b>Event Date:</b> $senderEventDate
+                                <br />
+                                <b>Message Sent:</b>
                                 <br /><br />
-                                Message Sent:
+                                <b>Subject:</b> $senderSubject
                                 <br /><br />
-                                Event Date: $senderEventDate
-                                <br /><br />
-                                Subject: $senderSubject
                                 <br />$senderMsg<br /><br />
 
 
