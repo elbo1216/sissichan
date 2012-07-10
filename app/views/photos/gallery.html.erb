@@ -5,7 +5,7 @@
     <% image_counter = 1 -%>
     <% @gallery.each do |g| -%>
       <div class='thumb page-<%= page_counter -%>' id='thumb-<%= image_counter -%>'>
-        <a href='javascript:showImage(<%= image_counter %>, <%= @gallery.size %>, "<%= g.image.file_path + '/' + g.image.file_name%>", "<%= g.image.caption %>", "<%= g.image.caption_url %>");'>
+        <a href='javascript:showImage(<%= image_counter %>, <%= @gallery.size %>, "<%= g.image.file_path + '/' + g.image.file_name%>", "<%= g.image.caption %>", "<%= g.image.caption2 %>", "<%= g.image.caption_url %>", "<%= g.image.caption2_url %>");'>
         <img src="<%= g.image.thumb_file_path + '/' + g.image.thumb_file_name %>" />
         </a>
       </div>  

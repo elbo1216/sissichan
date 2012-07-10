@@ -1,4 +1,4 @@
-function showImage(imageId, totalImages, imagePath, caption, url) {
+function showImage(imageId, totalImages, imagePath, caption, caption2, url, caption2_url) {
   var imageContainer = $('.full-image .image-container')
   imageContainer.empty();
   imageContainer
@@ -25,6 +25,41 @@ function showImage(imageId, totalImages, imagePath, caption, url) {
     $('#image-nav-next')
      .attr('href', $($('#thumb-'+(imageId+1)).find("a")[0]).attr('href'));
   }
+
+  var captionLink2 = caption2
+  if (caption2_url != "") {
+    captionLink2 = $('<a>')
+                   .attr('href', caption2_url)
+                   .attr('target', '_blank')
+                   .css('color', '#FEF3F6')
+                   .css('font-weight', 'bold')
+                   .hover(function() {
+                     $(this).css('color', '#817B68')
+                    }, function() {
+                     $(this).css('color', 'white')
+                    }
+                   )
+                   .html(caption2);
+
+  }
+  var imageDiv2 = $('<div>')
+               .css('position', 'absolute')
+               .css('float', 'left')
+               .css('color', 'white')
+               .css('font-weight', 'bold')
+               .css('paddingTop', '370px')
+               .css('paddingLeft', '10px')
+               .append(captionLink2);
+  var imageDivShadow2 = $('<div>')
+               .css('position', 'absolute')
+               .css('font-weight', 'bold')
+               .css('marginTop', '371px')
+               .css('marginLeft', '11px')
+               .css('color', 'black')
+               .append(caption2);
+
+  imageContainer.append(imageDivShadow2);
+  imageContainer.append(imageDiv2);
 
   var captionLink = caption
   if (url != "") {
