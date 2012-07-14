@@ -7,3 +7,4 @@ public/images/photos/thumbs
 *.swp
 config/features/stage
 Gemfile.lock
+config/database.yml
