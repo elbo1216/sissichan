@@ -13,7 +13,7 @@ class Contact < ActiveRecord::Base
   # is in place so she can launch her site.  Should be removed when
   # an alternative is figured out.
   def send_mail_hack
-    url = URI.parse('http://rails.sissichan.com/mail/sendmail.php')
+    url = URI.parse('http://www.sissichan.com/mail/sendmail.php')
     post_args = { 'name' => self.name,
                    'phone' => self.phone,
                    'email' => self.email,
