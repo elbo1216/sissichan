@@ -8,3 +8,4 @@ public/images/photos/thumbs
 config/features/stage
 Gemfile.lock
 config/database.yml
+db/schema.rb
