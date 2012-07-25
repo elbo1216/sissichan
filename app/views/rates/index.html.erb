@@ -13,22 +13,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Hair & Make-Up</td>
-              <td class='right-align'>$250</td>
-            </tr>
-            <tr>
-              <td>Hair Only</td>
-              <td class='right-align'>$150</td>
-            </tr>
-            <tr>
-              <td>Make-Up Only</td>
-              <td class='right-align'>$150</td>
-            </tr>
-            <tr>
-              <td>Trial</td>
-              <td class='right-align'>$125</td>
-            </tr>
+            <% @bride_rates.each do |bride| -%>
+              <tr>
+                <td><%= bride.service_name -%></td>
+                <td class='right-align'><%= bride.service_rate -%></td>
+              </tr>
+            <% end -%>
           </tbody>
         </table>
       </div>
@@ -42,26 +32,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Hair & Make-Up</td>
-              <td class='right-align'>$200</td>
-            </tr>
-            <tr>
-              <td>Hair Only</td>
-              <td class='right-align'>$110</td>
-            </tr>
-            <tr>
-              <td>Make-Up Only</td>
-              <td class='right-align'>$110</td>
-            </tr>
-            <tr>
-              <td>Trial</td>
-              <td class='right-align'>$100</td>
-            </tr>
-            <tr>
-              <td>Flower Girl</td>
-              <td class='right-align'>$40</td>
-            </tr>
+            <% @other_rates.each do |bride| -%>
+              <tr>
+                <td><%= bride.service_name -%></td>
+                <td class='right-align'><%= bride.service_rate -%></td>
+              </tr>
+            <% end -%>
           </tbody>
         </table>
       </div>
@@ -77,27 +53,23 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Hair Extensions</td>
-            <td class='right-align'>$100 per person / Trial + $50</td>
-          </tr>
-          <tr>
-            <td>Airbrush Make-Up</td>
-            <td class='right-align'>$50 per person / Trial + $25</td>
-          </tr>
+          <% @optional_rates_tier1.each do |optional| -%>
+            <tr>
+              <td><%= optional.service_name -%></td>
+              <td class='right-align'><%= optional.service_rate -%></td>
+            </tr>
+          <% end -%>
         </tbody>
       </table>
       <br/><br/>
       <table>
         <tbody>
-          <tr>
-            <td>Early Morning Fee (meeting before 7am)</td>
-            <td class='right-align'>$100</td>
-          </tr>
-          <tr>
-            <td>Travel Fee (meeting outside of the N.Y.C area)</td>
-            <td class='right-align'>starting at $100</td>
-          </tr>
+          <% @optional_rates_tier2.each do |optional| -%>
+            <tr>
+              <td><%= optional.service_name -%></td>
+              <td class='right-align'><%= optional.service_rate -%></td>
+            </tr>
+          <% end -%>
         </tbody>
       </table>
     </div>
