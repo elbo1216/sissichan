@@ -15,8 +15,10 @@ class ContactController < ApplicationController
       contact.message = params['message']
       contact.save!
   
-      contact.send_mail_hack 
-      render :text => "Ok"
+      Emailer.contact(contact).deliver
+#      resp, data = contact.send_mail_hack 
+      
+      render :text => 'Ok'
     rescue Exception => e
       render :text => e.message
     end
