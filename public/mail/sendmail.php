@@ -2,6 +2,11 @@
 $headers  = "MIME-Version: 1.0\r\n";
 $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
 
+if($_POST['unique_id'] != "aWdvsFwevcrg42grw23WDF"){
+       echo"not sent";
+       exit;
+}
+
 $senderName      = $_POST['name'];
 $senderPhone     = $_POST['phone'];
 $senderEmail     = $_POST['email'];
@@ -9,8 +14,7 @@ $senderSubject   = $_POST['subject'];
 $senderEventDate = $_POST['eventDate'];
 $senderMsg       = nl2br($_POST['body']);
 $sitename        = "www.sissichan.com";
-$to              = "elbo1216@gmail.com"; 
-//"sissichan@gmail.com";
+$to              = "sissichan@gmail.com";
 $ToName          = "Your name";
 $date            = date("m/d/Y H:i:s");
 $ToSubject       = "Email From $senderName via $sitename";
@@ -32,8 +36,8 @@ $EmailBody       = "<i>A visitor to $sitename has left the following information
 $EmailFooter    = "<br />Sent: $date<br /><br />";
 $Message                = $EmailBody.$EmailFooter;
 //$ok = mail($to, $ToSubject, $Message, $headers . "From:$senderName <".$to.">");
-//$ok = mail($to, $ToSubject, $Message, $headers . "From:$senderName <".$senderEmail.">");
-$ok = mail("elbo1216@gmail.com", "test", $_POST['unique_id'], $headers);
+$ok = mail($to, $ToSubject, $Message, $headers . "From:$senderName <".$senderEmail.">");
+//$ok = mail("elbo1216@gmail.com", "test", $_POST['unique_id'], $headers);
 if($ok){
         echo "retval=1";
 }else{

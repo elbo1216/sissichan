@@ -12,7 +12,7 @@ class Emailer < ActionMailer::Base
     @email = contact_obj.email
     @phone = contact_obj.phone
 
-    mail(:subject => contact_obj.subject,
+    mail(:subject => "[SISSICHAN.COM]: #{contact_obj.subject}",
          :from => contact_obj.email,
          :reply_to => contact_obj.email)
   end
