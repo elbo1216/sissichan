@@ -36,7 +36,7 @@ $EmailBody       = "<i>A visitor to $sitename has left the following information
 $EmailFooter    = "<br />Sent: $date<br /><br />";
 $Message                = $EmailBody.$EmailFooter;
 //$ok = mail($to, $ToSubject, $Message, $headers . "From:$senderName <".$to.">");
-$ok = mail($to, $ToSubject, $Message, $headers . "From:$senderName <".$senderEmail.">");
+$ok = mail($to, $ToSubject, $Message, $headers . "From: $senderName\r\nReply-To: " .$senderEmail);
 //$ok = mail("elbo1216@gmail.com", "test", $_POST['unique_id'], $headers);
 if($ok){
         echo "retval=1";
