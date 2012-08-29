@@ -2,6 +2,7 @@ class ContactController < ApplicationController
   layout "frame"
 
   def index
+    @is_away = File.exists?("#{Rails.root}/config/features/away");
   end
 
   def submit

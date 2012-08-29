@@ -5,7 +5,7 @@ tmp/**/*
 public/images/photos/full
 public/images/photos/thumbs
 *.swp
-config/features/stage
+config/features
 Gemfile.lock
 config/database.yml
 db/schema.rb
