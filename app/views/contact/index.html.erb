@@ -2,6 +2,7 @@
   <div class='contact-image'></div>
   <div class='contact-form'>
     <div class='contact-info'>
+      <%= render :partial => 'away_notice' if @is_away %>
       <ul>
         <li>SISSI CHAN</li>
         <li>(917) 518-6846</li>
@@ -10,7 +11,6 @@
           <span>sissichan@gmail.com</span>
         </li>
       </ul>
-      <%= render :partial => 'away_notice' if @is_away %>
     </div>
     <div class='form-container'>
       <div class='contact-response' id='contact-response'></div>
