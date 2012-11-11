@@ -1,0 +1,13 @@
+.about_container {
+  margin: 20px auto;
+  width: 95%;
+}
+
+.about_container .title {
+  font-weight: bold;
+}
+
+.about_container textarea {
+  width: 95%;
+  margin: 10px 0px 20px;
+}

@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <%= stylesheet_link_tag 'admin/login' %>
+  </head>
+  <body>
+   <div class='login-container'>
+     <div class='logo'></div>
+     <div class='form'>
+       <div class='title'>Administrative Portal</div>
+       <form method='POST' action='/admin'>
+         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" />
+         <table>
+           <tr>
+             <td>Login</td>
+             <td><input name='email' type='text'></td>
+           </tr>
+           <tr>
+             <td>Password</td>
+             <td><input name='pass' type='password' /></td>
+           </tr>
+           <tr>
+             <td colspan=2><button>Login</button></td>
+           </tr>
+         </table>
+       </form>
+     </div>
+   </div>
+  </body>
+</html>

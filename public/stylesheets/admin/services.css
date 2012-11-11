@@ -1,0 +1,105 @@
+.rates-display {
+  float:left;
+}
+
+.rates-display .rates-content {
+  float:left;
+  width: 435px;
+  height 405px;
+  margin:  20px 0px 0px 20px;
+  background-color: #FEF3F6;
+}
+
+.rates-display .rates-content table {
+  border: 0px;
+  font-family: "Helvetica";
+  color: #4b3905;
+  font-size: 12px;
+  width: 95%;
+  border-collapse:collapse;
+}
+
+.rates-display .rates-content table thead {
+  background-color: #fce1e9;
+  color: #FC9CBB;
+}
+
+.rates-display .rates-content table td {
+  height: 20px;
+}
+
+.rates-display .rates-content table tbody {
+  border-top: 15px solid #FEF3F6;
+}
+
+.rates-display .rates-content .right-align {
+  text-align:right;
+}
+
+.rates-display .rates-top {
+}
+
+.rates-display .rates-top-left {
+  float:left;
+  width: 50%;
+}
+
+.rates-display .rates-top-right {
+  float:left;
+  width: 50%;
+}
+
+.rates-display .rates-mid {
+  margin: 20px 0px 0px 0px;
+}
+
+.rates-display .rates-content .rates-mid table {
+  width: 97%;
+}
+
+.rates-display .rates-bottom {
+  margin: 90px 0px 0px 0px;
+}
+
+.rates-display .rates-bottom a {
+  color: #f390b0;
+  font-weight: bold;
+}
+
+.rates-display .rates-bottom ul {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.rates-display .rates-bottom .rates-bottom-left-link {
+  float:left;
+}
+
+.rates-display .rates-bottom .rates-bottom-right-link {
+  float:right;
+}
+
+.rates-container {
+  float:left;
+  margin: 20px 50px;
+  border: solid 1px black;
+}
+
+.rates-container td {
+  font-size: 14px;
+  padding: 3px;
+}
+
+.rates-container th {
+  font-size: 14px;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.rates-container input {
+  display: none;
+}
+
+.rates-container .saveLink {
+  display: none;
+}

@@ -1,0 +1,73 @@
+.contacts-search-container form {
+  width: 90%;
+  margin: auto;
+}
+
+.button {
+  font-size: 12px;
+  color: white;
+  padding: 5px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  opacity: 1;
+  background-color: rgba(78, 152, 60, 0.35);
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: rgba(78, 152, 60, 0.85);
+}
+
+.contacts-search-container td {
+  padding: 5px;
+}
+
+.contacts-search-container .results {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.contacts-search-container .results {
+  width: 90%;
+  margin: 20px auto;
+}
+
+/* Away Page */
+
+.away {
+  padding: 20px 50px;
+  width: 90%;
+  margin: auto;
+}
+
+.away textarea {
+  width: 95%;
+  margin: 10px 0px 20px;
+}
+/* Chart Page */
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.graph select {
+  margin:0px 0px 0px 50px;
+}
+/* End Chart Page */

@@ -5,7 +5,6 @@ File.open('../doc/wedding_captions.csv').each do |line|
   caption_hash[arr[0]] = {:caption => arr[1], :caption_url => arr[2].chomp}
 end
 
-
 File.open('../doc/glamor_captions.csv').each do |line|
   arr = line.split(',')
   caption_hash[arr[0]] = {:caption => arr[1], :caption_url => arr[2].chomp}

@@ -1,4 +1,4 @@
-class Contacts < ActiveRecord::Migration
+class CreateContacts < ActiveRecord::Migration
   def self.up
     sql = "CREATE TABLE contacts (
              id           integer NOT NULL AUTO_INCREMENT PRIMARY KEY,

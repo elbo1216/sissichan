@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <%= stylesheet_link_tag 'admin/layout' %>
+    <%= stylesheet_link_tag 'jquery-ui-1.9.0.custom' %>
+    <%= stylesheet_link_tag 'bootstrap' %>
+    <%= stylesheet_link_tag 'bootstrap-responsive' %>
+    <%= stylesheet_link_tag 'jquery.dataTables' %>
+    <%= stylesheet_link_tag 'jquery.dataTables_themeroller' %>
+    <%= stylesheet_link_tag 'admin/about' %>
+    <%= stylesheet_link_tag 'admin/photos' %>
+    <%= stylesheet_link_tag 'admin/services' %>
+    <%= stylesheet_link_tag 'admin/reviews' %>
+    <%= stylesheet_link_tag 'admin/press' %>
+    <%= stylesheet_link_tag 'admin/contacts' %>
+    <%= javascript_include_tag 'lib/jquery-1.7.2.min' %>
+    <%= javascript_include_tag 'lib/jquery-ui-1.9.0.custom.min' %>
+    <%= javascript_include_tag 'lib/bootstrap' %>
+    <%= javascript_include_tag 'lib/jquery.upload/jquery.iframe-transport' %>
+    <%= javascript_include_tag 'lib/jquery.upload/jquery.fileupload' %>
+    <%= javascript_include_tag 'lib/jquery.dataTables' %>
+    <%= javascript_include_tag 'lib/d3.v2.min' %>
+    <%= javascript_include_tag 'admin/layout' %>
+    <%= javascript_include_tag 'admin/photo' %>
+    <%= javascript_include_tag 'util.js' %>
+  </head>
+  <body>
+    <div class='overlay'></div>
+    <%= render :partial => '/admin/photos/image_form' %>
+    <div class='navbar navbar-static-top'>
+      <div class='navbar-inner'>
+        <div class='container'>
+          <span class='brand'>Administrative Portal</span>
+          <ul id='main_menu' class='nav'>
+            <li id='about'><a href='/admin/about'>About</a></li>
+            <li id='services'><a href='/admin/services'>Rates</a></li>
+            <li id='photos'><a href='/admin/photos'>Photos</a></li>
+            <li id='reviews'><a href='/admin/reviews'>Review</a></li>
+            <li id='press'><a href='/admin/press'>Press</a></li>
+            <li id='contacts'><a href='/admin/contacts'>Contacts</a></li>
+          </ul>
+          <ul class='logout nav'>
+            <li id='logout'><a href='/signout'>Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <%= yield -%>
+  </body>
+</html>

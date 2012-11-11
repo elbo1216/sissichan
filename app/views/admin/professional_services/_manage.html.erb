@@ -1,0 +1,143 @@
+<div class='rates-display'>
+  <div class='rates-content'>
+    <div class='rates-top'>
+      <div class='rates-top-left'>
+        <table>
+          <thead>
+            <tr>
+              <td colspan=2>
+                BRIDE 
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @bride_rates.each do |bride| -%>
+              <tr>
+                <td id="dispServ<%= bride.id %>"><%= bride.service_name -%></td>
+                <td id="dispRate<%= bride.id %>" class='right-align'><%= bride.service_rate -%></td>
+              </tr>
+            <% end -%>
+          </tbody>
+        </table>
+      </div>
+      <div class='rates-top-right'>
+        <table>
+          <thead>
+            <tr>
+              <td colspan=2>
+                BRIDESMAIDS/OTHERS:
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @other_rates.each do |bride| -%>
+              <tr>
+                <td id="dispServ<%= bride.id %>"><%= bride.service_name -%></td>
+                <td id="dispRate<%= bride.id %>" class='right-align'><%= bride.service_rate -%></td>
+              </tr>
+            <% end -%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class='clear'></div>
+    <div class='rates-mid'>
+      <table>
+        <thead>
+          <tr>
+            <td colspan=2>
+              OPTIONAL ADD-ON SERVICES:
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @optional_rates_tier1.each do |optional| -%>
+            <tr>
+              <td id="dispServ<%= optional.id %>"><%= optional.service_name -%></td>
+              <td id="dispRate<%= optional.id %>" class='right-align'><%= optional.service_rate -%></td>
+            </tr>
+          <% end -%>
+        </tbody>
+      </table>
+      <br/><br/>
+      <table>
+        <tbody>
+          <% @optional_rates_tier2.each do |optional| -%>
+            <tr>
+              <td id="disp-<%= optional.id %>"><%= optional.service_name -%></td>
+              <td id="disp-<%= optional.id %>" class='right-align'><%= optional.service_rate -%></td>
+            </tr>
+          <% end -%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class='rates-container'>
+  <table>
+    <thead>
+      <tr>
+        <th>Service Name</th>
+        <th>Service Type</th>
+        <th>Service </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @all_services.each do |r| -%>
+      <tr>
+        <td><%= r.service_type %></td>
+        <td>
+          <input id='val-Serv-<%= r.id %>' type='text' value='<%= r.service_name %>'>
+          <span id='span-Serv-<%= r.id %>' ><%= r.service_name %></span>
+        </td>
+        <td>
+          <input id='val-Rate-<%= r.id %>' type='text' value='<%= r.service_rate %>'>
+          <span id='span-Rate-<%= r.id %>' ><%= r.service_rate %></span>
+        </td>
+        <td>
+          <a id='update-<%= r.id %>' class='updateLink' href='javascript:updateRow(<%= r.id -%>)'>Update</a>
+          <a id='save-<%= r.id %>' class='saveLink' href='javascript:saveRow(<%= r.id -%>)'>Save</a>
+        </td>
+      </tr>
+    <% end -%>
+    </tbody>
+  </table>
+</div>
+<script>
+$(document).ready(function() {
+  $('input').keyup(function() {
+    var id = $(this).attr('id').split('-')[2];
+    var type = $(this).attr('id').split('-')[1];
+    $('#disp' + type + id).html($(this).val());
+  });
+});
+
+function updateRow(id) {
+  $('#val-Rate-' + id).show();
+  $('#val-Serv-' + id).show();
+  $('#span-Rate-' + id).hide();
+  $('#span-Serv-' + id).hide();
+  $('#update-' + id).hide();
+  $('#save-' + id).show();
+}
+
+function saveRow(id) {
+  var params = {'id': id,
+                'service_name': $('#val-Serv-' + id).val(),
+                'service_rate': $('#val-Rate-' + id).val()};
+  $.ajax({
+    url: '/admin/services/update_records',
+    data: params,
+    success: function(data) {
+      $('#span-Rate-' + id).html($('#val-Rate-' + id).val());
+      $('#val-Rate-' + id).hide();
+      $('#val-Serv-' + id).hide();
+      $('#span-Rate-' + id).show();
+      $('#span-Serv-' + id).show();
+      $('#update-' + id).show();
+      $('#save-' + id).hide();
+    }
+  });
+}
+</script>

@@ -1,0 +1,109 @@
+/* Review Form*/
+.review-form {
+  display: none;
+  position: absolute;
+  width: 800px;
+  height: 500px;
+  top: 100px;
+  z-index: 101;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  background-color: white;
+  margin: auto;
+}
+
+.review-form table {
+  margin: 50px;
+}
+
+.review-form td {
+  vertical-align: top;
+  font-size: 14px;
+}
+
+.review-form input {
+  width: 600px;
+}
+
+.review-form textarea {
+  width: 100%;
+}
+
+.review-form .close-form {
+  float: right;
+  margin: 20px;
+  font-size: 16px;
+}
+
+.review-form .close-form:hover {
+  text-decoration: underline;
+  background-color: white;
+}
+
+.review-form .submit {
+  float: right;
+  padding: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background-color: #9E3A00;
+  color: white;
+}
+
+.review-form a:hover {
+  background-color: rgba(158, 58, 1, .75);
+  text-decoration: none;
+}
+
+/* End Form*/
+
+.reviews-button {
+  margin: 0px 0px 10px 70px;
+}
+
+.reviews-container .new-button {
+  margin: 0px 10px 10px 25px;
+}
+
+.reviews-container ul {
+  list-style: none;
+  width: 90%;
+  margin: 0px auto 30px;
+}
+
+.reviews-container li {
+  border: 1px solid black;
+  background-color: #FFFFFF; 
+}
+
+.reviews-container li:hover {
+  cursor: pointer;
+  background-color: #FFFE9C; 
+}
+
+.reviews-container li td {
+  padding: 10px;
+}
+
+.reviews-container table {
+  margin: auto;
+  width: 100%;
+}
+
+.reviews-container .name {
+  width: 10%;
+}
+
+.reviews-container .message {
+  width: 87%;
+}
+
+.reviews-container .save-link {
+  display: none;
+}
+
+.reviews-container .remove-row {
+  display: none;
+  width: 3%;
+}

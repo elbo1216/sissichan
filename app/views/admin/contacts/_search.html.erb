@@ -1,0 +1,79 @@
+<div class='alert-info well info'>
+DIRECTIONS: 
+  <ul>
+    <li>You can search for any people that had contacted you through the site here. The form allows you to find contact info by their email or by a date range from when you were contacted.</li>
+    <li>Once your results come back you can also search through the list of contact info by specific text in their email from the search box located on the top right hand side of the table.</li>
+  </ul>
+</div>
+<div class='contacts-search-container'>
+  <form id='search-form' action='/admin/contacts/search' class='well' method='POST' >
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" />
+    <table>
+      <tr>
+        <td>Email</td>
+        <td><input type='text' name='email' value='<%= @email %>'/></td>
+      </tr>
+      <tr>
+        <td>Received from</td>
+        <td><input id='start_datepicker' type='text' name='requested_start' value='<%= @requested_start %>'/></td>
+      </tr>
+      <tr>
+        <td>Received to</td>
+        <td><input id='end_datepicker' type='text' name='requested_end' value='<%= @requested_end %>'/></td>
+      </tr>
+      <tr>
+        <td colspan=2><span id='form-submit' class='button'>Search</span></td>
+      </tr>
+    </table>
+  </form>
+
+  <div class='results'>
+    <table id='datatable'>
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Email</td>
+          <td>Phone</td>
+          <td>Event Date</td>
+          <td>Subject</td>
+          <td>Message</td>
+          <td>Received At</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @results.each do |r| -%>
+          <tr>
+            <td><%= r.name -%></td>
+            <td><%= r.email -%></td>
+            <td><%= r.phone -%></td>
+            <td><%= r.event_date -%></td>
+            <td><%= r.subject -%></td>
+            <td><%= r.message -%></td>
+            <td><%= r.created_at.strftime('%m-%d-%Y') -%></td>
+          </tr>
+        <% end -%>
+      </tbody>
+    </table>
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+    $('#start_datepicker').datepicker({
+       showOn: "button",
+       buttonImage: "/images/jquery-ui/calendar.gif",
+       buttonImageOnly: true,
+       dateFormat: 'yy-mm-dd'
+     });
+    $('#end_datepicker').datepicker({
+       showOn: "button",
+       buttonImage: "/images/jquery-ui/calendar.gif",
+       buttonImageOnly: true,
+       dateFormat: 'yy-mm-dd'
+     });
+
+    $('#form-submit').click(function() {$('#search-form').submit()});
+  });
+    $('#datatable').dataTable({
+       "bJQueryUI": true
+     });
+</script>

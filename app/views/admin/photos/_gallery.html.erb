@@ -1,0 +1,226 @@
+<ul class='nav nav-pills gallery-nav'>
+  <li id='wedding-pill' class='active'><a href='javascript:showGallery("wedding")'>Wedding</a></li>
+  <li id='glamor-pill' ><a href='javascript:showGallery("glamor")'>Glamor</a></li>
+</ul>
+<div class='list-active'>
+  <ul id='wedding-gallery' class='wedding-gallery'>
+    <% @wedding.each do |w| -%>
+     <li><img id='<%= "wedding_#{w.image.id}_#{w.position}" %>' src='<%= "#{w.image.thumb_file_path}/#{w.image.thumb_file_name}" %>' class='draggable' /></li>
+    <% end -%>
+  </ul>
+  <ul id='glamor-gallery' class='glamor-gallery'>
+    <% @glamor.each do |g| -%>
+     <li><img id='<%= "glamor_#{g.image.id}_#{g.position}" %>' src='<%= "#{g.image.thumb_file_path}/#{g.image.thumb_file_name}" %>' class='draggable' /></li>
+    <% end -%>
+  </ul>
+</div>
+<div class='list-inactive'>
+  <ul id='inactive-images'>
+    <% @photo_images.each do |n| -%>
+      <li><img id='<%= "none_#{n.id}" %>'src='<%= "#{n.thumb_file_path}/#{n.thumb_file_name}" %>' class='draggable' /></li>
+    <% end -%>
+  </ul>
+  <span class='save-gallery' id='saveGalleries'>Save</span>
+  <div class='callback' id='callbackMsg'>
+    <span></span>
+    <img src='/images/admin/loading-small.gif' />
+  </div>
+</div>
+<script>
+$(document).ready(function() {
+  $('#wedding-gallery').sortable({
+    connectWith: '#inactive-images',
+    receive: function(event, ui) {
+      reorderGallery('wedding');
+    },
+    start: function(event, ui) {
+      ui.item.css('border', '2px solid red');
+    },
+    stop: function(event, ui) {
+      ui.item.css('border', '0px');
+    },
+    over: function(event, ui) {
+      $(this).css('border-width', '3px');
+    },
+    out: function(event, ui) {
+      $(this).css('border-width', '1px');
+    },
+    update: function(event, ui) {
+      $(this).css('border-width', '1px');
+      ui.item.css('border', '0px');
+      reorderGallery('wedding');
+    }
+  });
+
+  $('#glamor-gallery').sortable({
+    connectWith: '#inactive-images',
+    receive: function(event, ui) {
+      reorderGallery('glamor');
+    },
+    start: function(event, ui) {
+      ui.item.css('border', '2px solid red');
+    },
+    stop: function(event, ui) {
+      ui.item.css('border', '0px');
+    },
+    update: function(event, ui) {
+      $(this).css('border-width', '1px');
+      ui.item.css('border', '0px');
+      reorderGallery('wedding');
+    },
+    over: function(event, ui) {
+      $(this).css('border-width', '3px');
+    },
+    out: function(event, ui) {
+      $(this).css('border-width', '1px');
+    }
+  });
+
+  $('#inactive-images').sortable({
+    connectWith: '#wedding-gallery',
+    receive: function(event, ui) {
+      $.ajax({
+        url: '/admin/photos/unassign',
+        data: {'image_id': $(ui.item.html()).attr('id').split('_')[1]}
+      });
+    },
+    start: function(event, ui) {
+      ui.item.css('border', '2px solid red');
+    },
+    stop: function(event, ui) {
+      ui.item.css('border', '0px');
+    },
+    update: function(event, ui) {
+      $(this).css('border-width', '1px');
+      ui.item.css('border', '0px');
+    },
+    out: function(event, ui) {
+      $(this).css('border-width', '1px');
+    },
+    over: function(event, ui) {
+      $(this).css('border-width', '3px');
+    }
+  });
+
+  $('img').each(function() {
+    $(this).dblclick(function() {
+      showImage($(this).attr('id'));
+    });
+  });
+
+  $('#saveGalleries').click(function() {saveGalleries();});
+});
+
+function showGallery(gallery) {
+  $('.nav-pills li').removeClass('active');
+  $('#' + gallery + '-pill').addClass('active');
+  $('.list-active ul').hide();
+  $('.' + gallery + '-gallery').fadeIn(500);
+  $('#inactive-images').sortable({
+    connectWith: '#' + gallery + '-gallery',
+    remove: function(event, ui) {
+      $.ajax({
+        url: '/admin/photos/unassign',
+        data: {'image_id': $(ui.item.html()).attr('id').split('_')[1], 'gallery_type': gallery},
+        success: function() { alert(1)}
+      });
+    },
+    start: function(event, ui) {
+      ui.item.css('border', '2px solid red');
+    },
+    update: function(event, ui) {
+      $(this).css('border-width', '1px');
+      ui.item.css('border', '0px');
+    },
+    out: function(event, ui) {
+      $(this).css('border-width', '1px');
+    },
+    over: function(event, ui) {
+      $(this).css('border-width', '3px');
+    }
+  });
+} 
+
+function showImage(id) {
+  var image_id = id.split('_')[1];
+  $.ajax({
+    url: '/admin/photos/get_image/',
+    data: {'image_id': image_id},
+    success: function(data) {
+      $('#image-full')
+        .html('<img src="' + data.photo_image.file_path + '/' + data.photo_image.file_name + '" />');
+      $('#caption1').val(data.photo_image.caption);
+      $('#caption1Url').val(data.photo_image.caption_url);
+      $('#caption2').val(data.photo_image.caption2);
+      $('#caption2Url').val(data.photo_image.caption2_url);
+      $('.overlay')
+       .css('width', '100%')
+       .css('height', '100%')
+       .fadeIn(500);
+      $('.image-form')
+        .css('margin-left', ($('body').width() - $('.image-form').width())/2)
+        .css('margin-top', '150px')
+        .fadeIn(500)
+
+      $('#closeImageForm').click(function() {
+        $('.image-form').fadeOut(500);
+        $('.overlay').fadeOut(500);
+      });
+
+      $('#updateImageLink')
+        .click(function() {
+          $.ajax({
+            url: '/admin/photos/edit_image',
+            data: {'id': image_id,
+                   'caption1': $('#caption1').val(),
+                   'caption1_url': $('#caption1Url').val(),
+                   'caption2': $('#caption2').val(),
+                   'caption2_url': $('#caption2Url').val()},
+            success: function(data) {
+              if (data.success) {
+                $('#closeImageForm').click();
+              }
+            }
+          });
+        });
+    }
+  });
+
+}
+
+function reorderGallery(gallery) {
+  var i = 1;
+  $('#' + gallery + '-gallery img').each(function(index, img) {
+    var id_arr = $(img).attr('id').split('_');
+    $(img).attr('id', id_arr[0] + '_' + id_arr[1] + '_' + i);
+    i = i + 1;
+  })
+}
+
+function saveGalleries() {
+  var params = {'wedding' : {}, 'glamor': {}};
+  $('#wedding-gallery img').each(function(index, img) {
+    var id_arr = $(img).attr('id').split('_');
+    params.wedding[id_arr[1]] = id_arr[2];
+  });
+
+  $('#glamor-gallery img').each(function(index, img) {
+    var id_arr = $(img).attr('id').split('_');
+    params.glamor[id_arr[1]] = id_arr[2];
+  });
+
+  $.ajax({
+     url: '/admin/photos/save_galleries',
+     data: params,
+     type: 'POST',
+     beforeSend: function(xhr) {
+      $('.callback img').show();
+    },
+    success: function(data) {
+      $('.callback img').hide();
+      $('.callback span').html(data);
+    }
+  });
+}
+
+</script>

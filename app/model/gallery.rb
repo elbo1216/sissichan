@@ -1,3 +1,3 @@
 class Gallery < ActiveRecord::Base
-  belongs_to :image
+  belongs_to :image, :class_name => 'PhotoImage'
 end

@@ -1,0 +1,137 @@
+<div class='list-new-container'>
+  <div class='new-container well'>
+   <form id='new-press-form' action='/admin/press/add' method='post' enctype='multipart/form-data'>
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" />
+      File: <input type='file' name='image' id='press-file' class='file-input'>
+      URL: <input type='text' name='url' id='new-url'>
+      <span class='new-press-button'>Add</span>
+    </form>
+  </div>
+  <div class='clear'></div>
+</div>
+<div class='admin-press-container'>
+  <div class='url-form' >
+    <input id='url-form-id' type='hidden' />
+    <img id='url-form-img' src='#'>
+    <br/>
+    <br/>
+    URL: <input id='url-form-input' type='text' />
+    <br/>
+   <span class='url-form-close'>Close</span><span class='url-form-update'>Update</span>
+  </div>
+  <div class='list-active'>
+    <% position = 1 -%>
+    <% (1..9).each do |a| -%>
+      <ul id='pos_<%= position %>' class='press-active sortable-list'>
+        <% if @active[a] -%>
+        <li>
+          <img id='img_<%= @active[a].id %>'src=" <%= "#{@active[a].image_file_path}/#{@active[a].image_file_name}" %>" />
+            <input id='url_<%= @active[a].id %>' type='hidden' value='<%= @active[a].url %>'/>
+        </li>
+        <% end -%>
+      </ul>
+      <% position += 1 -%>
+    <% end -%>
+  </div>
+  <div class='list-inactive'>
+      <ul id='inactive-list' class='sortable-list'>
+        <% @inactive.each do |a| -%>
+          <li>
+            <img id='img_<%= a.id %>'src=" <%= "#{a.image_file_path}/#{a.image_file_name}" %>" />
+            <input id='url_<%= a.id %>' type='hidden' value='<%= a.url %>'/>
+          </li>
+        <% end -%>
+      </ul>
+    <div style='clear:both'></div>
+    <a href='javascript:updatePositions()' class='save-gallery'>Save</a>
+  </div>
+</div>
+<script>
+$(document).ready(function() {
+  $('.sortable-list').sortable({
+    connectWith: '.sortable-list',
+    receive: function(event, ui) {
+      if($(this).find('li').length > 1 && $(this).attr('id') != 'inactive-list') {
+        ui.sender.sortable("cancel");
+      } else {
+        adjustHeights();
+      }
+    },
+    over: function(event, ui) {
+    },
+    out: function(event, ui) {
+      $(this).css('border-width', '1px');
+    }
+  });
+
+  $('.press-active img').dblclick(function() {
+     var margin = ($(document).width() - $('.url-form').width())/2;
+     var id = $(this).attr('id').split('_')[1];
+     $('.overlay')
+        .css('height', '100%')
+        .css('width', '100%')
+        .fadeIn(200);
+     $('#url-form-img').attr('src', $(this).attr('src'));
+     $('#url-form-input').val($('#url_' + id).val());
+     $('#url-form-id').val(id);
+     $('.url-form')
+        .css('left', margin)
+        .fadeIn(200);
+   });
+
+  adjustHeights();
+
+  $('.url-form-close').click(function() {
+     $('.overlay').fadeOut(200);
+     $('.url-form').fadeOut(200);
+  });
+
+  $('.url-form-update').click(function() {
+    var params = {'id': $('#url-form-id').val(),
+                  'url' : $('#url-form-input').val()};
+    $.ajax({
+       url: '/admin/press/update_url',
+       data: params,
+       success: function() {location.reload()}
+     });
+
+     $('.overlay').fadeOut(200);
+     $('.url-form').fadeOut(200);
+  });
+
+  $('.new-press-button').click(function() {
+    $('#new-press-form').submit();
+  })
+});
+
+function adjustHeights() {
+  $('.press-active').each(function(index, ul) {
+    var height = $(ul).height()
+    $($(ul).find('img')[0]).one('load', function() {
+      if(this.complete) {
+        $(this).css('margin-top', (height - $(this).height())/2); 
+      }
+    });
+  });
+}
+
+function updatePositions() {
+  var params = [];
+  $('.list-active ul').each(function(index, ul) {
+    var pos = $(ul).attr('id').split('_')[1]
+    if ($(ul).find('img').length > 0) {
+      var id = $($(ul).find('img')[0]).attr('id').split('_')[1]
+      params.push([id, pos])
+    }
+  });
+
+  $.ajax({
+    url: '/admin/press/update_positions',
+    data: {'data' : params},
+    type: 'POST',
+    success: function() {
+      location.reload();
+    }
+  });
+}
+</script>

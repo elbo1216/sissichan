@@ -8,6 +8,8 @@ class CreateImage < ActiveRecord::Migration
              thumb_file_name varchar(100) NOT NULL,
              caption         varchar(255),
              caption_url     varchar(255),
+             caption2         varchar(255),
+             caption2_url     varchar(255),
              created_at      timestamp default '0000-00-00 00:00:00',
              updated_at      timestamp default now() on update now())"
     execute sql

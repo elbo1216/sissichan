@@ -1,0 +1,90 @@
+.info {
+  width: 90%;
+  margin: 20px auto;
+  font-style: italic;
+  font-weight: bold;
+}
+.clear {
+  clear: both;
+}
+
+.overlay {
+  position: absolute;
+  display: none;
+  background-color: black;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  z-index: 100;
+}
+
+.navbar .navbar-inner .container {
+  padding: 0px 5px;
+  margin: 0px;
+  width: 100%;
+}
+
+.navbar .navbar-inner .container .logout {
+  float: right;
+}
+
+.list-active {
+  float: left;
+  width: 45%;
+  margin: 0px 50px;
+}
+
+.list-active li {
+  float: left;
+  margin: 5px;
+}
+
+.list-active ul {
+  float: left;
+  border: 1px solid #0188CC;
+  padding: 15px 0px 15px 30px;
+  overflow-y: scroll;
+  height: 600px;
+}
+
+.list-inactive {
+  float: left;
+  width: 45%;
+}
+
+.list-inactive ul {
+  float: left;
+  border: 1px solid #0188CC;
+  padding: 13px 0px 13px 13px;
+  overflow-y: scroll;
+  width: 90%;
+  height: 550px;
+  
+}
+
+.list-inactive li {
+  float: left;
+  margin: 3px;
+}
+
+.save-gallery {
+  float: right;
+  margin: 10px 30px;
+  padding: 10px 30px;
+  background-color: rgba(204, 0, 0, 0.55);
+  color: white;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  opacity: 1;
+}
+
+.save-gallery:hover {
+  background-color: rgba(204, 0, 0, 0.85);
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+}
+
+

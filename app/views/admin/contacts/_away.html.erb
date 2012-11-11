@@ -1,0 +1,27 @@
+<div class='alert-info well info'>
+DIRECTIONS: 
+  <ul>
+    <li>To enable an away message on the contacts page, select 'Yes' in the drop down where 'Enable Away Message' is located.</li>
+    <li>You can change your away message to anything you wish below.  Remember, having too large of a message may cause some issues with the display on the site. I suggest keep it as minimal as possible.</li>
+    <li>You must hit save before any changes are permanent.</li>
+  </ul>
+</div>
+<div class='away well'>
+  <form id='away_form' method='POST' action='/admin/contacts/away'>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" />
+    <span> Enable Away Message </span>
+    <select name='trigger_away'>
+      <option value='true'<%= "selected" if @away %> >Yes</option>
+      <option value='false' <%= "selected" unless @away %> >No</option>
+    </select>
+    <br/>
+    <textarea name='away_notice' rows='10'><%= @away_message %></textarea>
+    <br/>
+    <span id='save_away' class='button'>Save</span>
+  </form>
+</div>
+<script>
+  $(document).ready(function() {
+    $('#save_away').click(function() {$('#away_form').submit()})
+  })
+</script>

@@ -1,0 +1,154 @@
+/* image-form */
+.image-form {
+  position: absolute;
+  padding 20px;
+  background-color: white;
+  border: solid 1px black;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  display: none;
+  z-index: 101;
+  width: 800px;
+  height: 350px;
+}
+
+.image-form span {
+  float: right;
+  margin: 5px 10px 0px 0px;
+  font-size: 16px;
+  color: gray;
+}
+
+.image-form span:hover {
+  cursor: pointer;
+}
+
+.image-form .image-full {
+  float: left;
+  width: 40%;
+  border solid 1px gray;
+  margin: 25px 20px;
+}
+
+.image-form .image-meta {
+  float: left;
+  margin: 25px 20px;
+}
+
+.image-form table td {
+  border: 0px;
+  padding: 10px;
+}
+
+.image-form .form-label {
+  font-size: 16px;
+}
+
+.image-form .form-action {
+  padding: 5px;
+  font-size: 16px;
+  color: white;
+  -webkit-transition: background 0.3s ease;
+  -moz-transition: background 0.3s ease;
+  -ms-transition: background 0.3s ease;
+  -o-transition: background 0.3s ease;
+  transition: background 0.3s ease;
+  background: rgba(78, 152, 121, 0.75);
+}
+
+.image-form .form-action:hover {
+  background: rgba(78, 152, 121, 1.0);
+}
+
+.list-active {
+  width: 38%;
+}
+
+.list-inactive {
+  width: 50%;
+}
+
+/* end image-form */
+
+/* gallery css */
+.gallery-nav {
+  margin: 0px 50px 10px;
+}
+
+.list-active .glamor-gallery {
+  display: none;
+}
+
+.list-inactive .callback {
+  float: left;
+  margin: 10px 30px;
+}
+
+.list-inactive .callback span {
+  font-style: italic;
+}
+
+.list-inactive .callback img {
+  display: none;
+}
+/* end gallery */
+
+/* upload css */
+#dropzone {
+    line-height: 50px;
+    text-align: center;
+    font-weight: bold;
+    margin: auto;
+    margin: 20px;
+}
+
+#dropzone.in {
+    line-height: 200px;
+    font-size: larger;
+}
+
+#dropzone.hover {
+}
+
+#dropzone.fade {
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    opacity: 1;
+}
+
+.uploaded-container {
+  border: 1px solid black;
+  margin: 20px 10px;
+  display: none;
+  padding: 10px;
+}
+
+.uploaded-container input {
+  margin: 0px;
+}
+
+.uploaded-container .checkbox-label{
+  margin: 0px 5px 0px 10px;
+}
+
+.uploaded-container table {
+  margin: 0px;
+  width: 100%;
+}
+
+.uploaded-container table th{
+  padding: 10px;
+}
+
+.uploaded-container table td{
+  text-align: center;
+  margin: auto;
+  padding 5px;
+}
+
+.upload-btn {
+  margin: 20px 10px 0px;
+}

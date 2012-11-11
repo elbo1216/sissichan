@@ -1,0 +1,108 @@
+<div class='review-form'>
+  <a class='close-form' href='javascript:closeForm()'>Close</a>
+  <input type='hidden' id='reviewId'>
+  <table>
+    <tr>
+      <td>
+        Name:
+      </td>
+      <td>
+        <input id='reviewName' type='text' name='review-name'>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Review:
+      </td>
+      <td>
+        <textarea id='reviewText' rows=16 name='review-text'></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td colspan=2><a class='submit' href='javascript:submitReview()'>Submit</a></td>
+    </tr>
+  </table>
+</div>
+<ul class='nav nav-pills reviews-button'>
+  <li><a href='javascript:openReviewForm()'>New</a></li>
+  <li><a class='close-form' href='javascript:toggleRemove()'>Remove</a></li>
+</ul>
+<div class='reviews-container'>
+  <ul id='reviews-list' class='reviews-list' >
+    <% @reviews.each do |r| %>
+      <li id='review_<%= r.id %>_<%= r.position %>'>
+        <table>
+          <tr>
+            <td ><a class='remove-row' href='javascript:removeRow(<%= r.id %>)'><img src='/images/admin/close-button.png'/></a></td>
+            <td id='name_<%= r.id %>_<%= r.position %>' class='name'><%= r.name %></td>
+            <td id='msg_<%= r.id %>_<%= r.position %>' class='message'><%= r.message %></td>
+          </tr>
+        </table>
+      </li>
+    <% end -%>
+  </ul>
+</div>
+<script>
+$(document).ready(function() {
+  $('.reviews-container li').each(function(index, li) {
+    $(li).dblclick(function() {
+      var tds = $(this).find('td');
+      var id = $(this).attr('id').split('_')[1];
+      $('#reviewId').val(id)
+      $('#reviewName').val($(tds[1]).html())
+      $('#reviewText').val($(tds[2]).html())
+      openReviewForm();
+    });
+  });
+});
+
+function openReviewForm() {
+  $('.overlay')
+    .css('height', $(document).height())
+    .css('width', $(document).width())
+    .fadeIn(200);
+  $('.review-form')
+    .css('left', ($(document).width() - 800)/2)
+    .fadeIn(200);
+
+}
+
+function closeForm() {
+  $('.overlay').fadeOut(200);
+  $('.review-form').fadeOut(200);
+}
+
+function submitReview() {
+  params = {'name': $('#reviewName').val(), 'text': $('#reviewText').val()} 
+
+  if ($('#review_id').val() != '') {
+    params['id'] = $('#review_id').val();
+  }
+
+  $.ajax({
+    url: '/admin/reviews/add_update_review',
+    data: params,
+    type: 'POST',
+    success: function() {
+      closeForm();
+      location.reload();
+    }
+  });
+}
+
+function removeRow(id) {
+  $.ajax({
+    url: '/admin/reviews/deactivate',
+    data: {'id' : id},
+    success: function() {
+      location.reload();
+    }
+  })
+}
+
+function toggleRemove() {
+  $('.remove-row').each(function(index,row) { 
+      $(row).toggle() 
+  });
+}
+</script>

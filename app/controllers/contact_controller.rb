@@ -3,6 +3,7 @@ class ContactController < ApplicationController
 
   def index
     @is_away = File.exists?("#{Rails.root}/config/features/away");
+    @away = IO.read("#{Rails.root}/doc/away_notice.doc")
   end
 
   def submit
