@@ -1,19 +1,19 @@
 <div class='press-container'>
   <table>
     <tr>
-      <td><a href='<%= @press[0].url %>' target='_blank'><img src='<%= "#{@press[0].image_file_path}/#{@press[0].image_file_name}" %>' /></a></td>
-      <td><a href='<%= @press[1].url %>' target='_blank'><img src='<%= "#{@press[1].image_file_path}/#{@press[1].image_file_name}" %>' /></a></td>
-      <td><a href='<%= @press[2].url %>' target='_blank'><img src='<%= "#{@press[2].image_file_path}/#{@press[2].image_file_name}" %>' /></a></td>
+      <td><%= raw "<a href='#{@press[0].url}' target='_blank'><img src='#{@press[0].image_file_path}/#{@press[0].image_file_name}' /></a>" if @press[0] %></td>
+      <td><%= raw "<a href='#{@press[1].url}' target='_blank'><img src='#{@press[1].image_file_path}/#{@press[1].image_file_name}' /></a>" if @press[1] %></td>
+      <td><%= raw "<a href='#{@press[2].url}' target='_blank'><img src='#{@press[2].image_file_path}/#{@press[2].image_file_name}' /></a>" if @press[2] %></td>
     </tr>
     <tr>
-      <td><a href='<%= @press[3].url %>' target='_blank'><img src='<%= "#{@press[3].image_file_path}/#{@press[3].image_file_name}" %>' /></a></td>
-      <td><a href='<%= @press[4].url %>' target='_blank'><img src='<%= "#{@press[4].image_file_path}/#{@press[4].image_file_name}" %>' /></a></td>
-      <td><a href='<%= @press[5].url %>' target='_blank'><img src='<%= "#{@press[5].image_file_path}/#{@press[5].image_file_name}" %>' /></a></td>
+      <td><%= raw "<a href='#{@press[3].url}' target='_blank'><img src='#{@press[3].image_file_path}/#{@press[3].image_file_name}' /></a>" if @press[3] %></td>
+      <td><%= raw "<a href='#{@press[4].url}' target='_blank'><img src='#{@press[4].image_file_path}/#{@press[4].image_file_name}' /></a>" if @press[4] %></td>
+      <td><%= raw "<a href='#{@press[5].url}' target='_blank'><img src='#{@press[5].image_file_path}/#{@press[5].image_file_name}' /></a>" if @press[5] %></td>
     </tr>
     <tr>
-      <td><a href='<%= @press[6].url %>' target='_blank'><img src='<%= "#{@press[6].image_file_path}/#{@press[6].image_file_name}" %>' /></a></td>
-      <td><a href='<%= @press[7].url %>' target='_blank'><img src='<%= "#{@press[7].image_file_path}/#{@press[7].image_file_name}" %>' /></a></td>
-      <td><a href='<%= @press[8].url %>' target='_blank'><img src='<%= "#{@press[8].image_file_path}/#{@press[8].image_file_name}" %>' /></a></td>
+      <td><%= raw "<a href='#{@press[6].url}' target='_blank'><img src='#{@press[6].image_file_path}/#{@press[6].image_file_name}' /></a>" if @press[6] %></td>
+      <td><%= raw "<a href='#{@press[7].url}' target='_blank'><img src='#{@press[7].image_file_path}/#{@press[7].image_file_name}' /></a>" if @press[7] %></td>
+      <td><%= raw "<a href='#{@press[8].url}' target='_blank'><img src='#{@press[8].image_file_path}/#{@press[8].image_file_name}' /></a>" if @press[8] %></td>
     </tr>
   </table>
 </div>
