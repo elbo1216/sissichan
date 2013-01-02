@@ -74,18 +74,19 @@ class Admin::PhotosController < AdminController
     new_wedding = params['wedding'] || []
     new_glamor = params['glamor'] || []
 
-puts new_wedding.inspect
     begin
       wedding.each do |w|
         if new_wedding[w.image_id.to_s].blank?
- #         w.destroy
+          w.destroy
         else
-          w.position = new_wedding[w.image_id].to_i
-          w.save!
+          if w.position != new_wedding[w.image_id.to_s].to_i
+            w.position = new_wedding[w.image_id.to_s].to_i
+            w.save!
+          end
           new_wedding.delete(w.image_id.to_s)
         end
       end
-puts new_wedding.inspect
+
       new_wedding.each do |id, pos|
         gallery = Gallery.new
         gallery.image_id = id
@@ -96,11 +97,13 @@ puts new_wedding.inspect
 
       glamor.each do |g|
         if new_glamor[g.image_id.to_s].blank?
-#          g.destroy
+          g.destroy
         else
-          g.position = new_glamor[g.image_id].to_i
-          g.save!
-          new_wedding.delete(g.image_id.to_s)
+          if g.position != new_glamor[g.image_id.to_s].to_i
+            g.position = new_glamor[g.image_id.to_s].to_i
+            g.save!
+          end
+          new_glamor.delete(g.image_id.to_s)
         end
       end
 
