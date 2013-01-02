@@ -3,6 +3,7 @@
 </div>
 <div class='graph' id='d3_graph'>
   <form id='contact_form' method='POST'>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" />
     <select id='year' name='year'>
       <%= raw @option_list.join("") %>
     </select>
