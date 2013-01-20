@@ -42,7 +42,7 @@
     <div class='clear'></div>
     <div class='image-container'>
       <% unless @gallery.blank? -%>
-        <script>showImage(1, <%= @gallery.size %>, <%= "'#{@gallery.first.image.file_path}/#{@gallery.first.image.file_name}', '#{@gallery.first.image.caption}', '#{@gallery.first.image.caption_url}'" %>);</script>
+        <script>showImage(1, <%= @gallery.size %>, <%= "'#{@gallery.first.image.file_path}/#{@gallery.first.image.file_name}', '#{@gallery.first.image.caption}', '#{@gallery.first.image.caption2}', '#{@gallery.first.image.caption_url}', '#{@gallery.first.image.caption2_url}'" %>);</script>
       <% end -%>
     </div>
   </div>

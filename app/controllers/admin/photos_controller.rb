@@ -59,12 +59,13 @@ class Admin::PhotosController < AdminController
         image.save!
         ret[:success] += 1
       rescue Exception => e
+        logger.error("FATAL: Error while saving #{data['file']}: #{e.message}")
         ret[:errors][:count] += 1
         ret[:errors][:messages] << e.message
       end
     end
 
-    render :text => ret
+    render :json => ret
   end
 
   def save_galleries

@@ -25,6 +25,6 @@ class PhotoImage < ActiveRecord::Base
     raise "No image found" unless File.exists?(big_full_path)
     self.thumb_file_name = "thumb_#{self.file_name}"
     self.thumb_file_path = PhotoImage.thumb_path
-    Image.resize(big_full_path, File.join(self.thumb_path_full, self.thumb_file_name), 100, 100)
+    Image.resize(big_full_path, File.join(PhotoImage.thumb_path_full, self.thumb_file_name), 100, 100)
   end
 end

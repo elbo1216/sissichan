@@ -1,5 +1,6 @@
 <div class='upload-container'>
   <input id="fileupload" type="file" name="files[]" style='display:none'>
+  <div id='resultMsg' class='resultMsg'></div>
   <div id="dropzone" class="fade well">
     Drop files here
   <div id='uploaded' class='uploaded-container' >
@@ -18,7 +19,6 @@
     <button id='upload-btn' class='upload-btn'>Save All</button>
   </div>
   </div>
-  <div id='resultMsg' class='resultMsg'></div>
 </div>
 <script>
 $(document).ready(function() {
@@ -84,7 +84,6 @@ function uploadTmpImages() {
   $('#uploaded table tbody tr').each(function() {
     var entry = {}
     entry['file'] = $($(this).find('td')[1]).html();
-//    entry['photo_type'] = $($(this).find('input[name=photo_type]')[0]).val();
     entry['caption1'] = $($(this).find('input[name=caption1]')[0]).val();
     entry['caption1_url'] = $($(this).find('input[name=caption1_url]')[0]).val();
     entry['caption2'] = $($(this).find('input[name=caption2]')[0]).val();
@@ -96,14 +95,34 @@ function uploadTmpImages() {
     url: '/admin/photos/save_images',
     type: 'POST',
     data: {'data': JSON.stringify(data)},
-    beforeSend: function(xhr) {
-
+    end: function(xhr) {
+      $('#resultMsg')
+         .hide()
+         .html("");
     },
-    success: function(data) {
-      alert(data)
+    success: function(res) {
+      if (parseInt(res.errors.count) > 0) {
+        $('#resultMsg')
+           .addClass('alert')
+           .addClass('alert-error')
+           .html('There was a problem while saving your images. Contact Elton and tell him his shit is BROKEN!')
+           .show();
+      } else {
+        $('#uploaded tbody').html('');
+        $('#uploaded').hide();
+        $('#resultMsg')
+         .addClass('alert')
+         .addClass('alert-success')
+         .html('Save Complete')
+         .show();
+      }
     },
     error: function(data) {
-      alert(JSON.stringify(data))
+      $('#resultMsg')
+         .addClass('alert')
+         .addClass('alert-error')
+         .html('There was a problem while saving your images. Contact Elton and tell him his shit is BROKEN!')
+         .show();
     }
   });
 }
