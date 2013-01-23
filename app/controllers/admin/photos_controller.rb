@@ -49,15 +49,18 @@ class Admin::PhotosController < AdminController
         file = "#{Rails.root.to_s}/tmp/uploads/#{data['file']}"
         new_filename = "#{Time.now.strftime('%Y%m%d%H%M%S')}_#{data['file']}"
         FileUtils.mv file, File.join(PhotoImage.image_path_full, new_filename)
-        image = PhotoImage.create(:file_name => new_filename,
+        image = PhotoImage.create!(:file_name => new_filename,
                                   :file_path => PhotoImage.image_path,
                                   :caption => data['caption1'],
                                   :caption_url => data['caption1_url'],
                                   :caption2 => data['caption2'],
                                   :caption2_url => data['caption2_url'])
+        logger.info("Created Image")
+        image.create_thumbnail
         ret[:success] += 1
       rescue Exception => e
         logger.error("FATAL: Error while saving #{data['file']}: #{e.message}")
+        logger.error(e.backtrace.join("\n"))
         ret[:errors][:count] += 1
         ret[:errors][:messages] << e.message
       end
