@@ -16,7 +16,7 @@
       <tbody>
       </tbody>
     </table>
-    <button id='upload-btn' class='upload-btn'>Save All</button>
+    <button id='upload-btn' class='upload-btn'>Save All</button><span id='loader'></span>
   </div>
   </div>
 </div>
@@ -95,6 +95,10 @@ function uploadTmpImages() {
     url: '/admin/photos/save_images',
     type: 'POST',
     data: {'data': JSON.stringify(data)},
+    beforeSend: function() {
+      $('#loader').html("<img style='margin-top:20px'src='/images/admin/ajax-loader.gif' />");
+      $('#upload-btn').hide();
+    },
     end: function(xhr) {
       $('#resultMsg')
          .hide()
@@ -116,6 +120,8 @@ function uploadTmpImages() {
          .html('Save Complete')
          .show();
       }
+      $('#loader').html("");
+      $('#upload-btn').show();
     },
     error: function(data) {
       $('#resultMsg')
@@ -123,6 +129,8 @@ function uploadTmpImages() {
          .addClass('alert-error')
          .html('There was a problem while saving your images. Contact Elton and tell him his shit is BROKEN!')
          .show();
+      $('#loader').html("");
+      $('#upload-btn').show();
     }
   });
 }
