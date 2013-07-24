@@ -6,6 +6,14 @@ class PhotoImage < ActiveRecord::Base
   set_table_name 'images'
   has_many :gallery
 
+  def before_destroy
+    file = File.join(PhotoImage.image_path_full, file_name)
+    File.delete(file) if File.exists?(file)
+
+    thumb = File.join(PhotoImage.thumb_path_full, thumb_file_name)
+    File.delete(thumb) if File.exists?(thumb)
+  end
+
   def self.image_path_full
     "#{Rails.root.to_s}/public/images/photos/full"
   end

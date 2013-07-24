@@ -91,6 +91,27 @@
 .list-inactive .callback img {
   display: none;
 }
+
+.remove-image-bar {
+  position: relative;
+  height: 20px;
+  width: 100px;
+  background-color: black;
+  opacity: 0.4;
+  filter:alpha(opacity=40);
+  display: none;
+}
+
+.remove-image-bar span {
+  float: right;
+  margin-right: 2px;
+  color: red;
+}
+
+.remove-image-bar span:hover {
+  cursor: pointer;
+}
+
 /* end gallery */
 
 /* upload css */

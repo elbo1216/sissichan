@@ -70,6 +70,7 @@ Sissichan2012::Application.routes.draw do
   match '/admin/photos/save_galleries', :controller => 'admin/photos', :action => 'save_galleries' 
   match '/admin/photos/get_image', :controller => 'admin/photos', :action => 'get_image' 
   match '/admin/photos/edit_image', :controller => 'admin/photos', :action => 'edit_image' 
+  match '/admin/photos/delete_image', :controller => 'admin/photos', :action => 'delete_image' 
   match '/admin/services', :controller => 'admin/professional_services', :action => 'index' 
   match '/admin/services/update_records', :controller => 'admin/professional_services', :action => 'update_records' 
   match '/admin/reviews', :controller => 'admin/reviews', :action => 'index' 

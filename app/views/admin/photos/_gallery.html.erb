@@ -5,19 +5,31 @@
 <div class='list-active'>
   <ul id='wedding-gallery' class='wedding-gallery'>
     <% @wedding.each do |w| -%>
-     <li><img id='<%= "wedding_#{w.image.id}_#{w.position}" %>' src='<%= "#{w.image.thumb_file_path}/#{w.image.thumb_file_name}" %>' class='draggable' /></li>
+      <li>
+         <div id='<%= "wedding_#{w.image.id}_#{w.position}" %>' style="background-image: url('<%= "#{w.image.thumb_file_path}/#{w.image.thumb_file_name}" %>'); width: 100px; height: 100px" class='draggable'>
+           <div class='remove-image-bar'><span>&#x2715;<span></div>
+         </div>
+      </li>
     <% end -%>
   </ul>
   <ul id='glamor-gallery' class='glamor-gallery'>
     <% @glamor.each do |g| -%>
-     <li><img id='<%= "glamor_#{g.image.id}_#{g.position}" %>' src='<%= "#{g.image.thumb_file_path}/#{g.image.thumb_file_name}" %>' class='draggable' /></li>
+      <li>
+        <div id='<%= "glamor_#{g.image.id}_#{g.position}" %>' style="background-image: url('<%= "#{g.image.thumb_file_path}/#{g.image.thumb_file_name}" %>'); width: 100px; height: 100px" class='draggable'>
+          <div class='remove-image-bar'><span>&#x2715;<span></div><
+        /div>
+      </li>
     <% end -%>
   </ul>
 </div>
 <div class='list-inactive'>
-  <ul id='inactive-images'>
+  <ul id='inactive-images'class='inactive-images'>
     <% @photo_images.each do |n| -%>
-      <li><img id='<%= "none_#{n.id}" %>'src='<%= "#{n.thumb_file_path}/#{n.thumb_file_name}" %>' class='draggable' /></li>
+      <li>
+        <div id='<%= "none_#{n.id}" %>' style="background-image: url('<%= "#{n.thumb_file_path}/#{n.thumb_file_name}" %>'); width: 100px; height: 100px" class='draggable'>
+          <div class='remove-image-bar'><span>&#x2715;<span></div>
+        </div>
+      </li>
     <% end -%>
   </ul>
   <span class='save-gallery' id='saveGalleries'>Save</span>
@@ -28,6 +40,16 @@
 </div>
 <script>
 $(document).ready(function() {
+  $('li').each(function(index, li) {
+     $($(li).find('.remove-image-bar span')).click( function() {deleteImage($(li).children())} );
+     $(li).mouseenter(function() {
+          $($(this).find('.remove-image-bar')).slideDown(100);
+     })
+          .mouseleave(function() {
+          $($(this).find('.remove-image-bar')).slideUp(100);
+     });
+   })
+
   $('#wedding-gallery').sortable({
     connectWith: '#inactive-images',
     receive: function(event, ui) {
@@ -197,14 +219,28 @@ function reorderGallery(gallery) {
   })
 }
 
+function deleteImage(obj) {
+  var id_arr = $(obj).attr('id').split('_')[1];
+  $.ajax({
+     url: '/admin/photos/delete_image',
+     data: {'id' : id_arr},
+     type: 'POST',
+     beforeSend: function(xhr) {
+     },
+     success: function(data) {
+      obj.parent().remove();
+    }
+  });
+}
+
 function saveGalleries() {
   var params = {'wedding' : {}, 'glamor': {}};
-  $('#wedding-gallery img').each(function(index, img) {
+  $('#wedding-gallery div').each(function(index, img) {
     var id_arr = $(img).attr('id').split('_');
     params.wedding[id_arr[1]] = id_arr[2];
   });
 
-  $('#glamor-gallery img').each(function(index, img) {
+  $('#glamor-gallery div').each(function(index, img) {
     var id_arr = $(img).attr('id').split('_');
     params.glamor[id_arr[1]] = id_arr[2];
   });

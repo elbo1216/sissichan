@@ -29,6 +29,11 @@ class Admin::PhotosController < AdminController
     render :json => {'success' => success}
   end
 
+  def delete_image
+    PhotoImage.find(params['id']).destroy
+    render :json => {'success' => true}
+  end
+
   def upload_tmp
      path = "#{Rails.root.to_s}/tmp/uploads/#{params['files'].first.original_filename}"
      File.open(path, "w+") { |f| f.write(params['files'].first.read) }
