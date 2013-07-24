@@ -60,6 +60,11 @@
   background: rgba(78, 152, 121, 1.0);
 }
 
+.gallery-image-container {
+  width: 100px;
+  height: 100px;
+}
+
 .list-active {
   width: 38%;
 }

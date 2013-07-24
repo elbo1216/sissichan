@@ -80,6 +80,8 @@ class Admin::PhotosController < AdminController
     glamor = Gallery.find(:all, :conditions => ['gallery_type = ?', 'glamor'], :order => 'position')
     new_wedding = params['wedding'] || []
     new_glamor = params['glamor'] || []
+    max_wedding_pos = wedding.size
+    max_glamor_pos = glamor.size
 
     begin
       wedding.each do |w|
@@ -95,10 +97,16 @@ class Admin::PhotosController < AdminController
       end
 
       new_wedding.each do |id, pos|
+          
         gallery = Gallery.new
         gallery.image_id = id
         gallery.gallery_type = 'wedding'
-        gallery.position = pos
+        if pos == 'new'
+          gallery.position = max_wedding_pos
+          max_wedding_pos += 1
+        else
+          gallery.position = pos
+        end
         gallery.save!
       end
 
@@ -118,7 +126,12 @@ class Admin::PhotosController < AdminController
         gallery = Gallery.new
         gallery.image_id = id
         gallery.gallery_type = 'glamor'
-        gallery.position = pos
+        if pos == 'new'
+          gallery.position = max_glamor_pos
+          max_glamor_pos += 1
+        else
+          gallery.position = pos
+        end
         gallery.save!
       end
     rescue Exception => e
