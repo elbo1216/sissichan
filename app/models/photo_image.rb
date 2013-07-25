@@ -1,6 +1,6 @@
 require 'rubygems'
-#require 'RMagick'
-#include Magick
+require 'RMagick'
+include Magick
 
 class PhotoImage < ActiveRecord::Base
   set_table_name 'images'
