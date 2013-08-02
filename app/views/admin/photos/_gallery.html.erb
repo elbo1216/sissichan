@@ -16,7 +16,7 @@
     <% @glamor.each do |g| -%>
       <li>
         <div id='<%= "glamor_#{g.image.id}_#{g.position}" %>' style="background-image: url('<%= "#{g.image.thumb_file_path}/#{g.image.thumb_file_name}" %>');" class='draggable gallery-image-container'>
-          <div class='remove-image-bar'><span>&#x2715;<span></div><
+          <div class='remove-image-bar'><span>&#x2715;<span></div>
         </div>
       </li>
     <% end -%>

@@ -4,7 +4,7 @@ include Magick
 
 class PhotoImage < ActiveRecord::Base
   set_table_name 'images'
-  has_many :gallery
+  has_many :galleries, :foreign_key => 'image_id'
 
   def before_destroy
     file = File.join(PhotoImage.image_path_full, file_name)

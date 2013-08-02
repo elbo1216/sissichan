@@ -30,7 +30,9 @@ class Admin::PhotosController < AdminController
   end
 
   def delete_image
-    PhotoImage.find(params['id']).destroy
+    photo = PhotoImage.find(params['id'])
+    photo.galleries.map {|g| g.destroy }
+    photo.destroy
     render :json => {'success' => true}
   end
 
