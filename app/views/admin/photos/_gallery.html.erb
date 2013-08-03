@@ -212,7 +212,7 @@ function showImage(id) {
 
 function reorderGallery(gallery) {
   var i = 1;
-  $('#' + gallery + '-gallery img').each(function(index, img) {
+  $('#' + gallery + '-gallery .gallery-image-container').each(function(index, img) {
     var id_arr = $(img).attr('id').split('_');
     $(img).attr('id', id_arr[0] + '_' + id_arr[1] + '_' + i);
     i = i + 1;
