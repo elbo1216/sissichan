@@ -86,6 +86,9 @@ Sissichan2012::Application.routes.draw do
   match '/admin/contacts/away', :controller => 'admin/contacts', :action => 'away' 
   match '/admin/contacts/chart', :controller => 'admin/contacts', :action => 'chart' 
   match '/admin/about', :controller => 'admin/about', :action => 'index' 
+  match '/admin/faq', :controller => 'admin/faq', :action => 'index'
+  match '/admin/faq/upsert', :controller => 'admin/faq', :action => 'upsert'
+  match '/admin/faq/deactivate', :controller => 'admin/faq', :action => 'deactivate'
   namespace :admin do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)

@@ -40,8 +40,18 @@
       </div>
       <div class='clear'></div>
       <div class='footer'>
-        <%= Date.today.year -%> Copyright of Sissi Chan LLC.
-      <div>
+        <div class='social-btn-container'>
+          <ul>
+            <a href='<%= @media['facebook'] %>'><li class='facebook'></li></a>
+            <a href='<%= @media['twitter'] %>'><li class='twitter'></li></a>
+            <a href='<%= @media['pinterest'] %>'><li class='pinterest'></li></a>
+            <a href='<%= @media['instagram'] %>'><li class='instagram'></li></a>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class='date'>
+      <%= Date.today.year -%> Copyright of Sissi Chan LLC.
     </div>
   </body>
 </html>

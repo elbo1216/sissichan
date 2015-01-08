@@ -9,6 +9,7 @@ class RatesController < ApplicationController
   end
 
   def faq
+    @faqs = Faq.find(:all, :conditions => 'deleted_at is null')    
   end
 
   def booking_policy
