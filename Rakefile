@@ -4,6 +4,5 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 require 'rake/testtask'
-require 'rdoc/task'
 
 Sissichan2012::Application.load_tasks
