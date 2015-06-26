@@ -1,0 +1,15 @@
+<div class='policy_container well'>
+  <form id='policy_form' method='POST' action='/admin/booking_policy'>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" />
+    <span class='title'>Booking Policy Content</span>
+    <br/>
+    <textarea name='policy_content' rows='10'><%= @policy_content %></textarea>
+    <br/>
+    <span id='save_content' class='button'>Save</span>
+  </form>
+</div>
+<script>
+  $(document).ready(function() {
+    $('#save_content').click(function() {$('#policy_form').submit()})
+  })
+</script>

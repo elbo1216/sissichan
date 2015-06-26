@@ -1,0 +1,13 @@
+.policy_container {
+  margin: 20px auto;
+  width: 95%;
+}
+
+.policy_container .title {
+  font-weight: bold;
+}
+
+.policy_container textarea {
+  width: 95%;
+  margin: 10px 0px 20px;
+}

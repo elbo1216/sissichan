@@ -13,5 +13,6 @@ class RatesController < ApplicationController
   end
 
   def booking_policy
+    @policy_content = File.read("#{Rails.root}/doc/policy_content.txt")
   end
 end
