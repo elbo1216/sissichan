@@ -15,7 +15,7 @@ class Admin::ContactsController < AdminController
       conditions << "created_at >= '#{@requested_start}'" unless @requested_start.blank?
       conditions << "created_at <= '#{@requested_end}'" unless @requested_end.blank?
 
-      @results = Contact.find(:all, :conditions => conditions.join(' and '), :order => 'created_at desc')
+      @results = Contact.where(conditions.join(' and ')).order(created_at: desc)
     end
     render :index
   end
@@ -47,7 +47,7 @@ class Admin::ContactsController < AdminController
       selected = "selected" if @year.to_i == c.year
       @option_list << "<option value='#{c.year}' #{selected}>#{c.year}</option>"
     end
-    @data = Contact.find(:all, :conditions => ["year(created_at) = #{@year}"]).inject({}) { |results, contact| 
+    @data = Contact.("year(created_at) = #{@year}").inject({}) { |results, contact| 
       results[contact.created_at.strftime('%m-%Y')] = 0 unless results[contact.created_at.strftime('%m-%Y')]
       results[contact.created_at.strftime('%m-%Y')] += 1
       results

@@ -3,7 +3,7 @@ require 'RMagick'
 include Magick
 
 class PhotoImage < ActiveRecord::Base
-  set_table_name 'images'
+  self.table_name = 'images'
   has_many :galleries, :foreign_key => 'image_id'
 
   def before_destroy

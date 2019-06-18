@@ -2,6 +2,6 @@ class PressController < ApplicationController
   layout "frame"
 
   def index
-    @press = PressRelease.find(:all, :conditions => ['position is not null'], :order => 'position')
+    @press = PressRelease.where(:position => nil).order(:position)
   end
 end

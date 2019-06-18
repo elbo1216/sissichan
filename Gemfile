@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails', '4.2.11'
 gem 'rake', '0.9.2'
 
 # Bundle edge Rails instead:
@@ -19,10 +19,11 @@ gem 'rake', '0.9.2'
 # gem 'ruby-debug19'
 
 # Bundle the extra gems:
-gem 'mysql2', '< 0.3'
+gem 'mysql2', '~> 0.4.10'
 gem 'json'
 #gem 'ImageResize'
 gem 'devise'
+gem 'rmagick'
 # gem 'nokogiri'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'

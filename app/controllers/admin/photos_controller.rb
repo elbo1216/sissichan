@@ -6,8 +6,8 @@ class Admin::PhotosController < AdminController
 
   def gallery
      @partial = 'gallery'
-     @wedding = Gallery.find(:all, :include => :image, :conditions => ['gallery_type = ?', 'wedding'], :order => 'position')
-     @glamor = Gallery.find(:all, :include => :image, :conditions => ['gallery_type = ?', 'glamor'], :order => 'position')
+     @wedding = Gallery.includes(:image).where('gallery_type = ?', 'wedding').order(:position)
+     @glamor = Gallery.includes(:image).where('gallery_type = ?', 'glamor').order(:position)
      @photo_images = PhotoImage.find_by_sql('select pi.* from images pi left join galleries g on g.image_id = pi.id where g.id is null')
     render :index
   end
@@ -78,8 +78,8 @@ class Admin::PhotosController < AdminController
 
   def save_galleries
     message = 'Complete'
-    wedding = Gallery.find(:all, :conditions => ['gallery_type = ?', 'wedding'], :order => 'position')
-    glamor = Gallery.find(:all, :conditions => ['gallery_type = ?', 'glamor'], :order => 'position')
+    wedding = Gallery.where('gallery_type = ?', 'wedding').order(:position)
+    glamor = Gallery.where('gallery_type = ?', 'glamor').order(:position)
     new_wedding = params['wedding'] || []
     new_glamor = params['glamor'] || []
     max_wedding_pos = wedding.size

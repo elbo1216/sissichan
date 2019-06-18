@@ -5,12 +5,12 @@ class Admin::PressController < AdminController
 
   def manage
     @partial = 'manage'
-    pr = PressRelease.find(:all, :conditions => ['position is not null'], :order => 'position')
+    pr = PressRelease.where('position is not null').order(:position)
     @active = pr.inject({}) { |ret, i| 
       ret[i.position] = i
       ret
     }
-    @inactive = PressRelease.find(:all, :conditions => ['position is null'], :order => 'created_at')
+    @inactive = PressRelease.where('position is null').order(:created_at)
     render "index"
   end
 

@@ -10,7 +10,7 @@ class Admin::FaqController < AdminController
   end
 
   def upsert 
-    faq = Faq.find(:first, :conditions => ['id = ?', params['id']]) || Faq.new
+    faq = Faq.('id = ?', params['id']) || Faq.new
     faq.question = params['question']
     faq.answer = params['answer']
     faq.save

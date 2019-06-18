@@ -1,7 +1,7 @@
 class Admin::ReviewsController < AdminController
   def index
     @partial = 'manage'
-    @reviews = Review.find(:all, :conditions => ['is_live = 1'], :order => 'position')
+    @reviews = Review.where('is_live = 1').order(:position)
   end
 
   def add_update_review
