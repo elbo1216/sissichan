@@ -1,6 +1,6 @@
 class Admin::FaqController < AdminController
   def index
-    @faqs = Faq.find(:all, :conditions => 'deleted_at is null')    
+    @faqs = Faq.where('deleted_at is null')
   end
 
   def deactivate

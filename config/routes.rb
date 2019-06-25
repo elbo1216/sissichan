@@ -61,7 +61,7 @@ Sissichan2012::Application.routes.draw do
 
   # Sample resource route within a namespace:
   get '/admin', :controller => 'admin', :action => 'login'
-  post '/admin', :controller => 'admin/faq', :action => 'index'
+  post '/admin', :controller => 'admin/about', :action => 'index'
   get '/admin/photos/gallery', :controller => 'admin/photos', :action => 'gallery'
   post '/admin/photos/upload', :controller => 'admin/photos', :action => 'upload'
   post '/admin/photos/save_images', :controller => 'admin/photos', :action => 'save_images'

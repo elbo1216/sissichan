@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
-#  before_filter :authenticate_user!, :except => [:login, :afer_sign_out_path_for, :after_sign_in_path_for]
-  layout "admin", :except => [:login]
+  layout "admin_layout", :except => [:login]
+  before_filter :authenticate_user!, :except => [:login, :afer_sign_out_path_for, :after_sign_in_path_for]
   
   def after_sign_out_path_for(resource)                                                  
     '/admin'
