@@ -7,23 +7,26 @@
      <div class='logo'></div>
      <div class='form'>
        <div class='title'>Administrative Portal</div>
-       <form method='POST' action='/admin'>
+       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" />
          <table>
            <tr>
-             <td>Login</td>
-             <td><input name='email' type='text'></td>
+             <td><%= f.label :email %></td>
+             <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
            </tr>
            <tr>
-             <td>Password</td>
-             <td><input name='password' type='password' /></td>
+             <td><%= f.label :password %></td>
+             <td><%= f.password_field :password, autocomplete: "current-password" %></td>
            </tr>
            <tr>
-             <td colspan=2><button>Login</button></td>
+             <td colspan=2><%= f.submit "Login" %></td>
            </tr>
          </table>
-       </form>
+       <% end %>
      </div>
    </div>
   </body>
 </html>
+
+    
+

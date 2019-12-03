@@ -23,5 +23,7 @@ Sissichan2012::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
 
   config.eager_load = false
+
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
 

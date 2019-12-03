@@ -1,10 +1,9 @@
 Sissichan2012::Application.routes.draw do
-  devise_for :users, :skip => [:sessions]
+  devise_for :users, controllers: { sessions: 'sessions'}
 
   as :user do
-    get    'signin'   => 'sessions#new',     :as => :new_user_session
-    post   'signin'    => 'sessions#create',  :as => :user_session
-    get    'signout'  => 'sessions#destroy', :as => :destroy_user_session
+    get 'sign_out', to: "devise/sessions#destroy"
+    get 'admin', to: "sessions#new"
   end
 
   # The priority is based upon order of creation:
@@ -60,7 +59,6 @@ Sissichan2012::Application.routes.draw do
   #   end
 
   # Sample resource route within a namespace:
-  get '/admin', :controller => 'admin', :action => 'login'
   post '/admin', :controller => 'admin/about', :action => 'index'
   get '/admin/photos/gallery', :controller => 'admin/photos', :action => 'gallery'
   post '/admin/photos/upload', :controller => 'admin/photos', :action => 'upload'

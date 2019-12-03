@@ -2,16 +2,15 @@ class SessionsController < Devise::SessionsController
   def create
      results = 'OK'
      resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#new")
-     if resource.confirmed?
-       a = sign_in(resource_name, resource)
-     else
-       results = 'UNCONFIRMED'
-     end
-     render :text => results
+     sign_in(resource_name, resource)
+     redirect_to '/admin/about'
    end
 
    def new
-     redirect_to '/admin' unless resource
+    self.resource = resource_class.new(sign_in_params)
+    clean_up_passwords(resource)
+    yield resource if block_given?
+    render "/users/sessions/new"
    end
 
    def destroy
