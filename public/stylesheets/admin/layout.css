@@ -33,6 +33,17 @@ ul {
   float: right;
 }
 
+.navbar .navbar-inner .container .logout form {
+  margin: 0;
+}
+
+.navbar .navbar-inner .container .logout button {
+  padding: 0;
+  border: none;
+  background: none;
+  margin-top: 6px;
+}
+
 .list-active {
   float: left;
   width: 45%;

@@ -12,12 +12,13 @@ table td {
 }
 
 table td input {
-  width: 200px;
+  width: 95%;
 }
 
-table td button {
+.login-btn {
   float: right;
-  margin: 10px 40px 0px 0px;
+  width: 100%;
+  margin: 10px auto;
 }
 
 form {
@@ -49,12 +50,10 @@ form {
 }
 
 .login-container .logo {
-  position: absolute;
-  float: left;
   background-image: url('/images/logo.png');
   width: 230px;
   height: 210px;
-  margin: -100px 0px 0px 100px;
+  margin: -100px auto;
 }
 
 .login-container .form {
