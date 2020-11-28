@@ -22,6 +22,7 @@ class ContactController < ApplicationController
       
       render :text => 'Ok'
     rescue Exception => e
+      logger.error("Error when sending contact email: #{e.message}")
       render :text => e.message
     end
   end
